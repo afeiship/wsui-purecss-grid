@@ -1,0 +1,75 @@
+/*webkit-sass-percentage-grid Start*/
+$webkit-sass-percentage-grid-options: (
+  grid: 24,
+  gutter-x: 2%,
+  gutter-y: 1em,
+  responsive: (
+    sm: 567px,
+    md: 767px,
+    lg: 1023px
+  )
+) !default;
+@mixin webkit-sass-percentage-grid {
+  $grid: map-get(
+    $map: $webkit-sass-percentage-grid-options,
+    $key: grid
+  );
+
+  $gutter-x: map-get(
+    $map: $webkit-sass-percentage-grid-options,
+    $key: gutter-x
+  );
+
+  $gutter-x: $gutter-x / ($gutter-x * 0 + 1);
+
+  $gutter-y: map-get(
+    $map: $webkit-sass-percentage-grid-options,
+    $key: gutter-y
+  );
+
+  $gutter-y: $gutter-y / ($gutter-y * 0 + 1);
+
+  .container {
+    width: percentage((100 - $gutter-x)/100);
+    padding: 0 percentage(($gutter-x/2)/100);
+    margin: 0 auto;
+  }
+
+  .row {
+    margin: 1em 0;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .col {
+    float: left;
+    margin: 0 0 0 2%; /* This is the gutter */
+  }
+
+  .col:first-child {
+    margin: 0;
+  }
+
+  .centered.col:first-child {
+    float: none;
+    margin: 0 auto;
+  }
+
+  //  columns:
+
+  $item: (100 - $gutter-x * ($grid - 1)) / $grid;
+  @for $i from 1 through $grid {
+    $width: ($i - 1) * $gutter-x + $item * $i;
+    .col-#{$i}-#{$grid} {
+      width: percentage($width/100);
+    }
+  }
+
+
+}
+
+/*webkit-sass-percentage-grid End*/
