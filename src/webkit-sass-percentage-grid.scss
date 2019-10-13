@@ -30,8 +30,8 @@ $webkit-sass-percentage-grid-options: (
   $gutter__y: $gutter-y / ($gutter-y * 0 + 1);
 
   .container {
-    width: percentage((100 - $gutter-x)/100);
-    padding: 0 percentage(($gutter-x/2)/100);
+    width: unquote("#{(100 - $gutter-x)}%");
+    padding: 0 unquote("#{$gutter-x/2}%");
     margin: 0 auto;
   }
 
