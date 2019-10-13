@@ -12,6 +12,7 @@
   //styles
   gulp.task('test',function() {
     return gulp.src('docs/test.scss')
+      .pipe($.debug())
       .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
       .pipe(gulp.dest('docs'));
   });

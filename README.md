@@ -6,6 +6,19 @@
 
 ```scss
 @import 'node_modules/webkit-sass-percentage-grid/dist/webkit-sass-percentage-grid.scss';
+
+$webkit-sass-percentage-grid-options: (
+  grid: 12,
+  gutter-x: 2%,
+  gutter-y: 1em,
+  responsive: (
+    sm: 567px,
+    md: 767px,
+    lg: 1200px
+  )
+);
+
+@include webkit-sass-percentage-grid();
 ```
 
 ## resources

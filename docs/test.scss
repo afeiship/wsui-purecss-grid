@@ -1,5 +1,22 @@
-@import "../dist/webkit-sass-percentage-grid.scss";
+@import "../src/webkit-sass-percentage-grid.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-size: 62.5%;
+}
 
-.test-webkit-sass-percentage-grid{
-  border:1px solid red;
+p {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 12px;
+}
+.container {
+  margin-top: 20px;
+  background: #eee;
+  p {
+    background: #f60;
+  }
 }

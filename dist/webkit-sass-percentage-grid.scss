@@ -10,24 +10,25 @@ $webkit-sass-percentage-grid-options: (
   )
 ) !default;
 @mixin webkit-sass-percentage-grid {
-  $options: $webkit-sass-percentage-grid-options;
   $grid: map-get(
-    $map: $options,
+    $map: $webkit-sass-percentage-grid-options,
     $key: grid
   );
   $grid_1: $grid - 1;
 
   $gutter-x: map-get(
-    $map: $options,
+    $map: $webkit-sass-percentage-grid-options,
     $key: gutter-x
   );
+
   $gutter_x: $gutter-x / ($gutter-x * 0 + 1);
 
   $gutter-y: map-get(
-    $map: $options,
+    $map: $webkit-sass-percentage-grid-options,
     $key: gutter-y
   );
-  $gutter__y: $gutter-y / ($gutter-y * 0 + 1);
+
+  $gutter_y: $gutter-y / ($gutter-y * 0 + 1);
 
   .container {
     width: percentage((100 - $gutter-x)/100);
@@ -45,13 +46,12 @@ $webkit-sass-percentage-grid-options: (
     clear: both;
   }
 
-  [class^="col-"] {
-    width: 100%;
+  .col {
     float: left;
     margin: 0 0 0 unquote("#{$gutter-x}%"); /* This is the gutter */
   }
 
-  [class^="col-"]:first-child {
+  .col:first-child {
     margin: 0;
   }
 
@@ -91,27 +91,9 @@ $webkit-sass-percentage-grid-options: (
     }
   }
 
-  // todo: optmize to variables;
   @media (max-width: 767px) {
-    .row {
-      margin: 0;
-    }
-    [class^="col-"],
-    [class^="col-"]:first-child {
+    [class^="col-"] {
       width: 100%;
-      margin: 0.25em 0;
-    }
-
-    @for $i from 1 through $grid {
-      .col-#{$i}-#{$grid} {
-        &.is-split {
-          width: 49%;
-          margin: 0.25em 0 0.25em 2%;
-          &:first-child {
-            margin-left: 0;
-          }
-        }
-      }
     }
   }
 }
