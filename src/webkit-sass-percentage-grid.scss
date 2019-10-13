@@ -9,6 +9,7 @@ $webkit-sass-percentage-grid-options: (
     lg: 1200px
   )
 ) !default;
+
 @mixin webkit-sass-percentage-grid {
   $options: $webkit-sass-percentage-grid-options;
   $grid: map-get(
