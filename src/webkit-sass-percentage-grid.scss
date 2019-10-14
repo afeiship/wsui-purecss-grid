@@ -31,8 +31,9 @@ $webkit-sass-percentage-grid-options: (
   $gutter__y: $gutter-y / ($gutter-y * 0 + 1);
 
   .container {
-    width: unquote("#{(100 - $gutter-x)}%");
-    padding: 0 unquote("#{$gutter-x/2}%");
+    box-sizing: content-box;
+    width: unquote('#{(100 - $gutter-x)}%');
+    padding: 0 unquote('#{$gutter-x/2}%');
     margin: 0 auto;
   }
 
@@ -41,18 +42,18 @@ $webkit-sass-percentage-grid-options: (
   }
 
   .row:after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
 
-  [class^="col-"] {
+  [class^='col-'] {
     width: 100%;
     float: left;
-    margin: 0 0 0 unquote("#{$gutter-x}%"); /* This is the gutter */
+    margin: 0 0 0 unquote('#{$gutter-x}%'); /* This is the gutter */
   }
 
-  [class^="col-"]:first-child {
+  [class^='col-']:first-child {
     margin: 0;
   }
 
@@ -66,22 +67,22 @@ $webkit-sass-percentage-grid-options: (
   @for $i from 1 through $grid {
     $width: ($i - 1) * $gutter_x + $item * $i;
     .col-#{$i}-#{$grid} {
-      width: unquote("#{$width}%");
+      width: unquote('#{$width}%');
     }
 
     @if $i < $grid_1 {
       .offset-#{$i}-#{$grid} {
-        margin-left: unquote("#{$width + 2 * $gutter_x}%");
+        margin-left: unquote('#{$width + 2 * $gutter_x}%');
       }
       .offset-#{$i}-#{$grid}:first-child {
-        margin-left: unquote("#{$width + 1 * $gutter_x}%");
+        margin-left: unquote('#{$width + 1 * $gutter_x}%');
       }
     }
 
     @if $i < $grid {
       .offset-#{$i}-#{$grid},
       .offset-#{$i}-#{$grid}:first-child {
-        margin-left: unquote("#{$width + 1 * $gutter_x}%");
+        margin-left: unquote('#{$width + 1 * $gutter_x}%');
       }
     }
   }
@@ -92,30 +93,28 @@ $webkit-sass-percentage-grid-options: (
     }
   }
 
-  // todo: optmize to variables;
+  // todo: optimize to variables;
   @media (max-width: 767px) {
-    .row {
+    .row,
+    [class^='col-'] {
       margin: 0;
     }
-    [class^="col-"],
-    [class^="col-"]:first-child {
+    [class^='col-'],
+    [class^='col-']:first-child {
       width: 100%;
-      margin: 0.25em 0;
-    }
+      margin-bottom: 1em;
 
-    @for $i from 1 through $grid {
-      .col-#{$i}-#{$grid} {
-        &.is-split {
-          width: 49%;
-          margin: 0.25em 0 0.25em 2%;
-          &:first-child {
-            margin-left: 0;
-          }
+      &.is-split {
+        width: 49%;
+        //margin-left: 0;
+        margin-bottom: 1em;
+        &:first-child {
+          margin-right: 2%;
         }
       }
     }
   }
 }
 
-// @include webkit-sass-percentage-grid;
+//@include webkit-sass-percentage-grid;
 /*webkit-sass-percentage-grid End*/
