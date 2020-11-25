@@ -10,8 +10,9 @@
   gulp.task('styles', function () {
     return gulp
       .src('.tmp/index.scss')
-        .pipe(gulp.dest('dist'))
-        .pipe($.sass())
-        .pipe(gulp.dest('dist'));;
+      .pipe($.jswork.pkgHeader())
+      .pipe(gulp.dest('dist'))
+      .pipe($.sass())
+      .pipe(gulp.dest('dist'));;
   });
 })();
