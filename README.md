@@ -17,9 +17,9 @@ npm i @jswork/wsui-purecss-grid
 @import '~@jswork/wsui-purecss-grid';
 
 // or use `css`
-@import '~@jswork/wsui-purecss-grid/dist/index.css";
+@import '~@jswork/wsui-purecss-grid/dist/index.css';
 
-// you can customize prefix
+/* you can customize prefix */
 $wsui-purecss-grid-prefix: "wsui-" !default;
 ```
 
