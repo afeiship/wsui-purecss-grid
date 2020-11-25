@@ -1,30 +1,38 @@
 {
-  "name": "webkit-sass-percentage-grid",
+  "name": "@jswork/wsui-purecss-grid",
   "version": "1.0.0",
-  "description": "Responsive percentage grid system build with sass.",
-  "homepage": "https://github.com/afeiship/webkit-sass-percentage-grid",
+  "description": "Responsive percentage grid system use purecss.",
+  "homepage": "https://github.com/afeiship/wsui-purecss-grid",
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
   },
   "scripts": {
     "build": "gulp",
-    "dev": "node server.js",
-    "test": "gulp test",
-    "release": "gulp && gulp test"
+    "start": "serve docs",
+    "release": "release-it"
   },
-  "main": "dist/webkit-sass-percentage-grid.scss",
+  "main": "dist/index.scss",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^9.1.5",
-    "del": "^2.2.1",
+    "@jswork/gulp-pkg-header": "^1.0.3",
+    "autoprefixer": "^10.0.2",
+    "del": "^6.0.0",
     "express": "^4.17.1",
     "gulp": "^4.0.2",
-    "gulp-debug": "^4.0.0",
-    "gulp-load-plugins": "^1.2.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^4.0.2",
-    "yargs": "^4.7.1"
+    "gulp-concat": "^2.6.1",
+    "gulp-load-plugins": "^2.0.5",
+    "gulp-postcss": "^9.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.1.0",
+    "release-it": "^14.2.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "purecss": "^2.0.3"
   }
 }

@@ -1,22 +1,17 @@
 (function () {
-
-  'use strict';
+  ('use strict');
 
   var gulp = require('gulp');
-  var autoprefixer = require('autoprefixer');
-  var config = require('./config');
-  var argv = require('yargs').argv;
   var $ = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'gulp.*', 'del']
+    pattern: ['gulp-*', 'gulp.*', 'del', '@jswork/gulp-*'],
   });
 
-  //styles
+
   gulp.task('styles', function () {
-    return gulp.src('src/*.scss')
-      .pipe(gulp.dest('dist'))
-      .pipe($.sass())
-      .pipe($.postcss([autoprefixer()]))
-      .pipe(gulp.dest('dist'));
+    return gulp
+      .src('.tmp/index.scss')
+        .pipe(gulp.dest('dist'))
+        .pipe($.sass())
+        .pipe(gulp.dest('dist'));;
   });
-
-}());
+})();

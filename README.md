@@ -1,27 +1,39 @@
-# webkit-sass-percentage-grid
-> Responsive percentage grid system build with sass.
+# wsui-purecss-grid
+> Responsive percentage grid system use purecss.
 
-## usage
-- https://afeiship.github.io/webkit-sass-percentage-grid/
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
 
-```scss
-@import 'node_modules/webkit-sass-percentage-grid/dist/webkit-sass-percentage-grid.scss';
-
-$webkit-sass-percentage-grid-options: (
-  grid: 12,
-  gutter-x: 2%,
-  gutter-y: 1em,
-  responsive: (
-    sm: 567px,
-    md: 767px,
-    lg: 1200px
-  )
-);
-
-@include webkit-sass-percentage-grid();
+## installation
+```shell
+npm i @jswork/wsui-purecss-grid
 ```
 
-## resources
-- https://github.com/afeiship/generator-webkit-sassui
-- https://codepen.io/kccnma/pen/FdeBl
-- https://itnext.io/setting-up-sass-unit-testing-in-your-project-b683a2e8ac03
+## usage
+```scss
+@import '~@jswork/wsui-purecss-grid';
+
+// you can customize prefix
+$wsui-purecss-grid-prefix: "wsui-" !default;
+```
+
+## documentation
+- https://purecss.io/grids/
+
+## license
+Code released under [the MIT license](https://github.com/afeiship/wsui-purecss-grid/blob/master/LICENSE.txt).
+
+[version-image]: https://img.shields.io/npm/v/@jswork/wsui-purecss-grid
+[version-url]: https://npmjs.org/package/@jswork/wsui-purecss-grid
+
+[license-image]: https://img.shields.io/npm/l/@jswork/wsui-purecss-grid
+[license-url]: https://github.com/afeiship/wsui-purecss-grid/blob/master/LICENSE.txt
+
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/wsui-purecss-grid
+[size-url]: https://github.com/afeiship/wsui-purecss-grid/blob/master/dist/wsui-purecss-grid.min.js
+
+[download-image]: https://img.shields.io/npm/dm/@jswork/wsui-purecss-grid
+[download-url]: https://www.npmjs.com/package/@jswork/wsui-purecss-grid
+

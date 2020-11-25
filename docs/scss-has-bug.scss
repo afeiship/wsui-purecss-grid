@@ -1,7 +1,0 @@
-$number-y: 10%;
-$number_y: $number-y / ($number-y * 0 + 1);
-
-body{
-  width: $number-y; // 10% BUT--> 10
-  height: $number_y;
-}
