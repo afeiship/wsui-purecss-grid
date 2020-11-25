@@ -9,7 +9,6 @@
   },
   "scripts": {
     "build": "gulp",
-    "start": "serve docs",
     "release": "release-it"
   },
   "main": "dist/index.scss",
