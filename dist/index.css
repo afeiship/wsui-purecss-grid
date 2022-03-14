@@ -2,57 +2,54 @@
  * name: @jswork/wsui-purecss-grid
  * description: Responsive percentage grid system use purecss.
  * homepage: https://github.com/afeiship/wsui-purecss-grid
- * version: 1.0.1
- * date: 2020-11-25 17:32:42
+ * version: 1.0.2
+ * date: 2022-03-14 22:28:44
  * license: MIT
  */
 /*wsui-purecss-grid Start*/
 /*wsui-purecss-grid End*/
-/*!
-Pure v2.0.3
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/wsui-css/pure/blob/master/LICENSE.md
-*/
-/*csslint regex-selectors:false, known-properties:false, duplicate-properties:false*/
+/* grids */
 .wsui-g {
   letter-spacing: -0.31em;
   /* Webkit: collapse white-space between units */
+  *letter-spacing: normal;
+  /* reset IE < 8 */
+  *word-spacing: -0.43em;
+  /* IE < 8: collapse white-space between units */
   text-rendering: optimizespeed;
   /* Webkit: fixes text-rendering: optimizeLegibility */
   /*
-    Sets the font stack to fonts known to work properly with the above letter
-    and word spacings. See: https://github.com/wsui-css/pure/issues/41/
+  Sets the font stack to fonts known to work properly with the above letter
+  and word spacings. See: https://github.com/yahoo/pure/issues/41/
 
-    The following font stack makes Pure Grids work on all known environments.
+  The following font stack makes Pure Grids work on all known environments.
 
-    * FreeSans: Ships with many Linux distros, including Ubuntu
+  * FreeSans: Ships with many Linux distros, including Ubuntu
 
-    * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
-      Arial to get picked up by the browser, even though neither is available
-      in Chrome OS.
+  * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
+    Arial to get picked up by the browser, even though neither is available
+    in Chrome OS.
 
-    * Droid Sans: Ships with all versions of Android.
+  * Droid Sans: Ships with all versions of Android.
 
-    * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
-    */
-  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
-  /* Use flexbox when possible to avoid `letter-spacing` side-effects. */
-  display: -webkit-box;
+  * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
+  */
+  font-family: Helvetica, Arial, sans-serif;
+  /*
+  Use flexbox when possible to avoid `letter-spacing` side-effects.
+
+  NOTE: Firefox (as of 25) does not currently support flex-wrap, so the
+  `-moz-` prefix version is omitted.
+  */
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+  /* IE10 uses display: flexbox */
   display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
   /* Prevents distributing space between rows */
-  -ms-flex-line-pack: start;
+  -ms-align-content: flex-start;
+  -webkit-align-content: flex-start;
   align-content: flex-start; }
-
-/* IE10 display: -ms-flexbox (and display: flex in IE 11) does not work inside a table; fall back to block and rely on font hack */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  table .wsui-g {
-    display: block; } }
 
 /* Opera as of 12 on Windows needs word-spacing.
    The ".opera-only" selector is used to prevent actual prefocus styling
@@ -64,6 +61,9 @@ https://github.com/wsui-css/pure/blob/master/LICENSE.md
 
 .wsui-u {
   display: inline-block;
+  *display: inline;
+  /* IE < 8: fake inline-block */
+  zoom: 1;
   letter-spacing: normal;
   word-spacing: normal;
   vertical-align: top;
@@ -76,12 +76,133 @@ this the same font stack that Normalize.css sets for the `body`.
 .wsui-g [class*="wsui-u"] {
   font-family: sans-serif; }
 
+.wsui-u-1, .wsui-u-1-1, .wsui-u-1-2, .wsui-u-1-3, .wsui-u-2-3, .wsui-u-1-4, .wsui-u-3-4, .wsui-u-1-5, .wsui-u-2-5, .wsui-u-3-5, .wsui-u-4-5, .wsui-u-5-5, .wsui-u-1-6, .wsui-u-5-6, .wsui-u-1-8, .wsui-u-3-8, .wsui-u-5-8, .wsui-u-7-8, .wsui-u-1-12, .wsui-u-5-12, .wsui-u-7-12, .wsui-u-11-12, .wsui-u-1-24, .wsui-u-2-24, .wsui-u-3-24, .wsui-u-4-24, .wsui-u-5-24, .wsui-u-6-24, .wsui-u-7-24, .wsui-u-8-24, .wsui-u-9-24, .wsui-u-10-24, .wsui-u-11-24, .wsui-u-12-24,
+.wsui-u-13-24, .wsui-u-14-24, .wsui-u-15-24, .wsui-u-16-24, .wsui-u-17-24, .wsui-u-18-24, .wsui-u-19-24, .wsui-u-20-24, .wsui-u-21-24, .wsui-u-22-24, .wsui-u-23-24, .wsui-u-24-24 {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto; }
+
+.wsui-u-1-24 {
+  width: 4.1667%;
+  *width: 4.1357%; }
+
+.wsui-u-1-12, .wsui-u-2-24 {
+  width: 8.3333%;
+  *width: 8.3023%; }
+
+.wsui-u-1-8, .wsui-u-3-24 {
+  width: 12.5%;
+  *width: 12.469%; }
+
+.wsui-u-1-6, .wsui-u-4-24 {
+  width: 16.6667%;
+  *width: 16.6357%; }
+
+.wsui-u-1-5 {
+  width: 20%;
+  *width: 19.969%; }
+
+.wsui-u-5-24 {
+  width: 20.8333%;
+  *width: 20.8023%; }
+
+.wsui-u-1-4, .wsui-u-6-24 {
+  width: 25%;
+  *width: 24.969%; }
+
+.wsui-u-7-24 {
+  width: 29.1667%;
+  *width: 29.1357%; }
+
+.wsui-u-1-3, .wsui-u-8-24 {
+  width: 33.3333%;
+  *width: 33.3023%; }
+
+.wsui-u-3-8, .wsui-u-9-24 {
+  width: 37.5%;
+  *width: 37.469%; }
+
+.wsui-u-2-5 {
+  width: 40%;
+  *width: 39.969%; }
+
+.wsui-u-5-12, .wsui-u-10-24 {
+  width: 41.6667%;
+  *width: 41.6357%; }
+
+.wsui-u-11-24 {
+  width: 45.8333%;
+  *width: 45.8023%; }
+
+.wsui-u-1-2, .wsui-u-12-24 {
+  width: 50%;
+  *width: 49.969%; }
+
+.wsui-u-13-24 {
+  width: 54.1667%;
+  *width: 54.1357%; }
+
+.wsui-u-7-12, .wsui-u-14-24 {
+  width: 58.3333%;
+  *width: 58.3023%; }
+
+.wsui-u-3-5 {
+  width: 60%;
+  *width: 59.969%; }
+
+.wsui-u-5-8, .wsui-u-15-24 {
+  width: 62.5%;
+  *width: 62.469%; }
+
+.wsui-u-2-3, .wsui-u-16-24 {
+  width: 66.6667%;
+  *width: 66.6357%; }
+
+.wsui-u-17-24 {
+  width: 70.8333%;
+  *width: 70.8023%; }
+
+.wsui-u-3-4, .wsui-u-18-24 {
+  width: 75%;
+  *width: 74.969%; }
+
+.wsui-u-19-24 {
+  width: 79.1667%;
+  *width: 79.1357%; }
+
+.wsui-u-4-5 {
+  width: 80%;
+  *width: 79.969%; }
+
+.wsui-u-5-6, .wsui-u-20-24 {
+  width: 83.3333%;
+  *width: 83.3023%; }
+
+.wsui-u-7-8, .wsui-u-21-24 {
+  width: 87.5%;
+  *width: 87.469%; }
+
+.wsui-u-11-12, .wsui-u-22-24 {
+  width: 91.6667%;
+  *width: 91.6357%; }
+
+.wsui-u-23-24 {
+  width: 95.8333%;
+  *width: 95.8023%; }
+
+.wsui-u-1, .wsui-u-1-1, .wsui-u-5-5, .wsui-u-24-24 {
+  width: 100%; }
+
 /*!
-Pure v2.0.3
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/wsui-css/pure/blob/master/LICENSE.md
-*/
+  Pure v0.6.0
+  Copyright 2014 Yahoo! Inc. All rights reserved.
+  Licensed under the BSD License.
+  https://github.com/yahoo/pure/blob/master/LICENSE.md
+  */
 @media screen and (min-width: 35.5em) {
   .wsui-u-sm-1,
   .wsui-u-sm-1-1,
@@ -130,79 +251,108 @@ https://github.com/wsui-css/pure/blob/master/LICENSE.md
   .wsui-u-sm-23-24,
   .wsui-u-sm-24-24 {
     display: inline-block;
+    *display: inline;
+    zoom: 1;
     letter-spacing: normal;
     word-spacing: normal;
     vertical-align: top;
     text-rendering: auto; }
   .wsui-u-sm-1-24 {
-    width: 4.1667%; }
+    width: 4.1667%;
+    *width: 4.1357%; }
   .wsui-u-sm-1-12,
   .wsui-u-sm-2-24 {
-    width: 8.3333%; }
+    width: 8.3333%;
+    *width: 8.3023%; }
   .wsui-u-sm-1-8,
   .wsui-u-sm-3-24 {
-    width: 12.5000%; }
+    width: 12.5%;
+    *width: 12.469%; }
   .wsui-u-sm-1-6,
   .wsui-u-sm-4-24 {
-    width: 16.6667%; }
+    width: 16.6667%;
+    *width: 16.6357%; }
   .wsui-u-sm-1-5 {
-    width: 20%; }
+    width: 20%;
+    *width: 19.969%; }
   .wsui-u-sm-5-24 {
-    width: 20.8333%; }
+    width: 20.8333%;
+    *width: 20.8023%; }
   .wsui-u-sm-1-4,
   .wsui-u-sm-6-24 {
-    width: 25%; }
+    width: 25%;
+    *width: 24.969%; }
   .wsui-u-sm-7-24 {
-    width: 29.1667%; }
+    width: 29.1667%;
+    *width: 29.1357%; }
   .wsui-u-sm-1-3,
   .wsui-u-sm-8-24 {
-    width: 33.3333%; }
+    width: 33.3333%;
+    *width: 33.3023%; }
   .wsui-u-sm-3-8,
   .wsui-u-sm-9-24 {
-    width: 37.5000%; }
+    width: 37.5%;
+    *width: 37.469%; }
   .wsui-u-sm-2-5 {
-    width: 40%; }
+    width: 40%;
+    *width: 39.969%; }
   .wsui-u-sm-5-12,
   .wsui-u-sm-10-24 {
-    width: 41.6667%; }
+    width: 41.6667%;
+    *width: 41.6357%; }
   .wsui-u-sm-11-24 {
-    width: 45.8333%; }
+    width: 45.8333%;
+    *width: 45.8023%; }
   .wsui-u-sm-1-2,
   .wsui-u-sm-12-24 {
-    width: 50%; }
+    width: 50%;
+    *width: 49.969%; }
   .wsui-u-sm-13-24 {
-    width: 54.1667%; }
+    width: 54.1667%;
+    *width: 54.1357%; }
   .wsui-u-sm-7-12,
   .wsui-u-sm-14-24 {
-    width: 58.3333%; }
+    width: 58.3333%;
+    *width: 58.3023%; }
   .wsui-u-sm-3-5 {
-    width: 60%; }
+    width: 60%;
+    *width: 59.969%; }
   .wsui-u-sm-5-8,
   .wsui-u-sm-15-24 {
-    width: 62.5000%; }
+    width: 62.5%;
+    *width: 62.469%; }
   .wsui-u-sm-2-3,
   .wsui-u-sm-16-24 {
-    width: 66.6667%; }
+    width: 66.6667%;
+    *width: 66.6357%; }
   .wsui-u-sm-17-24 {
-    width: 70.8333%; }
+    width: 70.8333%;
+    *width: 70.8023%; }
   .wsui-u-sm-3-4,
   .wsui-u-sm-18-24 {
-    width: 75%; }
+    width: 75%;
+    *width: 74.969%; }
   .wsui-u-sm-19-24 {
-    width: 79.1667%; }
+    width: 79.1667%;
+    *width: 79.1357%; }
   .wsui-u-sm-4-5 {
-    width: 80%; }
+    width: 80%;
+    *width: 79.969%; }
   .wsui-u-sm-5-6,
   .wsui-u-sm-20-24 {
-    width: 83.3333%; }
+    width: 83.3333%;
+    *width: 83.3023%; }
   .wsui-u-sm-7-8,
   .wsui-u-sm-21-24 {
-    width: 87.5000%; }
+    width: 87.5%;
+    *width: 87.469%; }
   .wsui-u-sm-11-12,
   .wsui-u-sm-22-24 {
-    width: 91.6667%; }
+    width: 91.6667%;
+    *width: 91.6357%; }
   .wsui-u-sm-23-24 {
-    width: 95.8333%; }
+    width: 95.8333%;
+    *width: 95.8023%; }
   .wsui-u-sm-1,
   .wsui-u-sm-1-1,
   .wsui-u-sm-5-5,
@@ -257,79 +407,108 @@ https://github.com/wsui-css/pure/blob/master/LICENSE.md
   .wsui-u-md-23-24,
   .wsui-u-md-24-24 {
     display: inline-block;
+    *display: inline;
+    zoom: 1;
     letter-spacing: normal;
     word-spacing: normal;
     vertical-align: top;
     text-rendering: auto; }
   .wsui-u-md-1-24 {
-    width: 4.1667%; }
+    width: 4.1667%;
+    *width: 4.1357%; }
   .wsui-u-md-1-12,
   .wsui-u-md-2-24 {
-    width: 8.3333%; }
+    width: 8.3333%;
+    *width: 8.3023%; }
   .wsui-u-md-1-8,
   .wsui-u-md-3-24 {
-    width: 12.5000%; }
+    width: 12.5%;
+    *width: 12.469%; }
   .wsui-u-md-1-6,
   .wsui-u-md-4-24 {
-    width: 16.6667%; }
+    width: 16.6667%;
+    *width: 16.6357%; }
   .wsui-u-md-1-5 {
-    width: 20%; }
+    width: 20%;
+    *width: 19.969%; }
   .wsui-u-md-5-24 {
-    width: 20.8333%; }
+    width: 20.8333%;
+    *width: 20.8023%; }
   .wsui-u-md-1-4,
   .wsui-u-md-6-24 {
-    width: 25%; }
+    width: 25%;
+    *width: 24.969%; }
   .wsui-u-md-7-24 {
-    width: 29.1667%; }
+    width: 29.1667%;
+    *width: 29.1357%; }
   .wsui-u-md-1-3,
   .wsui-u-md-8-24 {
-    width: 33.3333%; }
+    width: 33.3333%;
+    *width: 33.3023%; }
   .wsui-u-md-3-8,
   .wsui-u-md-9-24 {
-    width: 37.5000%; }
+    width: 37.5%;
+    *width: 37.469%; }
   .wsui-u-md-2-5 {
-    width: 40%; }
+    width: 40%;
+    *width: 39.969%; }
   .wsui-u-md-5-12,
   .wsui-u-md-10-24 {
-    width: 41.6667%; }
+    width: 41.6667%;
+    *width: 41.6357%; }
   .wsui-u-md-11-24 {
-    width: 45.8333%; }
+    width: 45.8333%;
+    *width: 45.8023%; }
   .wsui-u-md-1-2,
   .wsui-u-md-12-24 {
-    width: 50%; }
+    width: 50%;
+    *width: 49.969%; }
   .wsui-u-md-13-24 {
-    width: 54.1667%; }
+    width: 54.1667%;
+    *width: 54.1357%; }
   .wsui-u-md-7-12,
   .wsui-u-md-14-24 {
-    width: 58.3333%; }
+    width: 58.3333%;
+    *width: 58.3023%; }
   .wsui-u-md-3-5 {
-    width: 60%; }
+    width: 60%;
+    *width: 59.969%; }
   .wsui-u-md-5-8,
   .wsui-u-md-15-24 {
-    width: 62.5000%; }
+    width: 62.5%;
+    *width: 62.469%; }
   .wsui-u-md-2-3,
   .wsui-u-md-16-24 {
-    width: 66.6667%; }
+    width: 66.6667%;
+    *width: 66.6357%; }
   .wsui-u-md-17-24 {
-    width: 70.8333%; }
+    width: 70.8333%;
+    *width: 70.8023%; }
   .wsui-u-md-3-4,
   .wsui-u-md-18-24 {
-    width: 75%; }
+    width: 75%;
+    *width: 74.969%; }
   .wsui-u-md-19-24 {
-    width: 79.1667%; }
+    width: 79.1667%;
+    *width: 79.1357%; }
   .wsui-u-md-4-5 {
-    width: 80%; }
+    width: 80%;
+    *width: 79.969%; }
   .wsui-u-md-5-6,
   .wsui-u-md-20-24 {
-    width: 83.3333%; }
+    width: 83.3333%;
+    *width: 83.3023%; }
   .wsui-u-md-7-8,
   .wsui-u-md-21-24 {
-    width: 87.5000%; }
+    width: 87.5%;
+    *width: 87.469%; }
   .wsui-u-md-11-12,
   .wsui-u-md-22-24 {
-    width: 91.6667%; }
+    width: 91.6667%;
+    *width: 91.6357%; }
   .wsui-u-md-23-24 {
-    width: 95.8333%; }
+    width: 95.8333%;
+    *width: 95.8023%; }
   .wsui-u-md-1,
   .wsui-u-md-1-1,
   .wsui-u-md-5-5,
@@ -384,79 +563,108 @@ https://github.com/wsui-css/pure/blob/master/LICENSE.md
   .wsui-u-lg-23-24,
   .wsui-u-lg-24-24 {
     display: inline-block;
+    *display: inline;
+    zoom: 1;
     letter-spacing: normal;
     word-spacing: normal;
     vertical-align: top;
     text-rendering: auto; }
   .wsui-u-lg-1-24 {
-    width: 4.1667%; }
+    width: 4.1667%;
+    *width: 4.1357%; }
   .wsui-u-lg-1-12,
   .wsui-u-lg-2-24 {
-    width: 8.3333%; }
+    width: 8.3333%;
+    *width: 8.3023%; }
   .wsui-u-lg-1-8,
   .wsui-u-lg-3-24 {
-    width: 12.5000%; }
+    width: 12.5%;
+    *width: 12.469%; }
   .wsui-u-lg-1-6,
   .wsui-u-lg-4-24 {
-    width: 16.6667%; }
+    width: 16.6667%;
+    *width: 16.6357%; }
   .wsui-u-lg-1-5 {
-    width: 20%; }
+    width: 20%;
+    *width: 19.969%; }
   .wsui-u-lg-5-24 {
-    width: 20.8333%; }
+    width: 20.8333%;
+    *width: 20.8023%; }
   .wsui-u-lg-1-4,
   .wsui-u-lg-6-24 {
-    width: 25%; }
+    width: 25%;
+    *width: 24.969%; }
   .wsui-u-lg-7-24 {
-    width: 29.1667%; }
+    width: 29.1667%;
+    *width: 29.1357%; }
   .wsui-u-lg-1-3,
   .wsui-u-lg-8-24 {
-    width: 33.3333%; }
+    width: 33.3333%;
+    *width: 33.3023%; }
   .wsui-u-lg-3-8,
   .wsui-u-lg-9-24 {
-    width: 37.5000%; }
+    width: 37.5%;
+    *width: 37.469%; }
   .wsui-u-lg-2-5 {
-    width: 40%; }
+    width: 40%;
+    *width: 39.969%; }
   .wsui-u-lg-5-12,
   .wsui-u-lg-10-24 {
-    width: 41.6667%; }
+    width: 41.6667%;
+    *width: 41.6357%; }
   .wsui-u-lg-11-24 {
-    width: 45.8333%; }
+    width: 45.8333%;
+    *width: 45.8023%; }
   .wsui-u-lg-1-2,
   .wsui-u-lg-12-24 {
-    width: 50%; }
+    width: 50%;
+    *width: 49.969%; }
   .wsui-u-lg-13-24 {
-    width: 54.1667%; }
+    width: 54.1667%;
+    *width: 54.1357%; }
   .wsui-u-lg-7-12,
   .wsui-u-lg-14-24 {
-    width: 58.3333%; }
+    width: 58.3333%;
+    *width: 58.3023%; }
   .wsui-u-lg-3-5 {
-    width: 60%; }
+    width: 60%;
+    *width: 59.969%; }
   .wsui-u-lg-5-8,
   .wsui-u-lg-15-24 {
-    width: 62.5000%; }
+    width: 62.5%;
+    *width: 62.469%; }
   .wsui-u-lg-2-3,
   .wsui-u-lg-16-24 {
-    width: 66.6667%; }
+    width: 66.6667%;
+    *width: 66.6357%; }
   .wsui-u-lg-17-24 {
-    width: 70.8333%; }
+    width: 70.8333%;
+    *width: 70.8023%; }
   .wsui-u-lg-3-4,
   .wsui-u-lg-18-24 {
-    width: 75%; }
+    width: 75%;
+    *width: 74.969%; }
   .wsui-u-lg-19-24 {
-    width: 79.1667%; }
+    width: 79.1667%;
+    *width: 79.1357%; }
   .wsui-u-lg-4-5 {
-    width: 80%; }
+    width: 80%;
+    *width: 79.969%; }
   .wsui-u-lg-5-6,
   .wsui-u-lg-20-24 {
-    width: 83.3333%; }
+    width: 83.3333%;
+    *width: 83.3023%; }
   .wsui-u-lg-7-8,
   .wsui-u-lg-21-24 {
-    width: 87.5000%; }
+    width: 87.5%;
+    *width: 87.469%; }
   .wsui-u-lg-11-12,
   .wsui-u-lg-22-24 {
-    width: 91.6667%; }
+    width: 91.6667%;
+    *width: 91.6357%; }
   .wsui-u-lg-23-24 {
-    width: 95.8333%; }
+    width: 95.8333%;
+    *width: 95.8023%; }
   .wsui-u-lg-1,
   .wsui-u-lg-1-1,
   .wsui-u-lg-5-5,
@@ -511,463 +719,110 @@ https://github.com/wsui-css/pure/blob/master/LICENSE.md
   .wsui-u-xl-23-24,
   .wsui-u-xl-24-24 {
     display: inline-block;
+    *display: inline;
+    zoom: 1;
     letter-spacing: normal;
     word-spacing: normal;
     vertical-align: top;
     text-rendering: auto; }
   .wsui-u-xl-1-24 {
-    width: 4.1667%; }
+    width: 4.1667%;
+    *width: 4.1357%; }
   .wsui-u-xl-1-12,
   .wsui-u-xl-2-24 {
-    width: 8.3333%; }
+    width: 8.3333%;
+    *width: 8.3023%; }
   .wsui-u-xl-1-8,
   .wsui-u-xl-3-24 {
-    width: 12.5000%; }
+    width: 12.5%;
+    *width: 12.469%; }
   .wsui-u-xl-1-6,
   .wsui-u-xl-4-24 {
-    width: 16.6667%; }
+    width: 16.6667%;
+    *width: 16.6357%; }
   .wsui-u-xl-1-5 {
-    width: 20%; }
+    width: 20%;
+    *width: 19.969%; }
   .wsui-u-xl-5-24 {
-    width: 20.8333%; }
+    width: 20.8333%;
+    *width: 20.8023%; }
   .wsui-u-xl-1-4,
   .wsui-u-xl-6-24 {
-    width: 25%; }
+    width: 25%;
+    *width: 24.969%; }
   .wsui-u-xl-7-24 {
-    width: 29.1667%; }
+    width: 29.1667%;
+    *width: 29.1357%; }
   .wsui-u-xl-1-3,
   .wsui-u-xl-8-24 {
-    width: 33.3333%; }
+    width: 33.3333%;
+    *width: 33.3023%; }
   .wsui-u-xl-3-8,
   .wsui-u-xl-9-24 {
-    width: 37.5000%; }
+    width: 37.5%;
+    *width: 37.469%; }
   .wsui-u-xl-2-5 {
-    width: 40%; }
+    width: 40%;
+    *width: 39.969%; }
   .wsui-u-xl-5-12,
   .wsui-u-xl-10-24 {
-    width: 41.6667%; }
+    width: 41.6667%;
+    *width: 41.6357%; }
   .wsui-u-xl-11-24 {
-    width: 45.8333%; }
+    width: 45.8333%;
+    *width: 45.8023%; }
   .wsui-u-xl-1-2,
   .wsui-u-xl-12-24 {
-    width: 50%; }
+    width: 50%;
+    *width: 49.969%; }
   .wsui-u-xl-13-24 {
-    width: 54.1667%; }
+    width: 54.1667%;
+    *width: 54.1357%; }
   .wsui-u-xl-7-12,
   .wsui-u-xl-14-24 {
-    width: 58.3333%; }
+    width: 58.3333%;
+    *width: 58.3023%; }
   .wsui-u-xl-3-5 {
-    width: 60%; }
+    width: 60%;
+    *width: 59.969%; }
   .wsui-u-xl-5-8,
   .wsui-u-xl-15-24 {
-    width: 62.5000%; }
+    width: 62.5%;
+    *width: 62.469%; }
   .wsui-u-xl-2-3,
   .wsui-u-xl-16-24 {
-    width: 66.6667%; }
+    width: 66.6667%;
+    *width: 66.6357%; }
   .wsui-u-xl-17-24 {
-    width: 70.8333%; }
+    width: 70.8333%;
+    *width: 70.8023%; }
   .wsui-u-xl-3-4,
   .wsui-u-xl-18-24 {
-    width: 75%; }
+    width: 75%;
+    *width: 74.969%; }
   .wsui-u-xl-19-24 {
-    width: 79.1667%; }
+    width: 79.1667%;
+    *width: 79.1357%; }
   .wsui-u-xl-4-5 {
-    width: 80%; }
+    width: 80%;
+    *width: 79.969%; }
   .wsui-u-xl-5-6,
   .wsui-u-xl-20-24 {
-    width: 83.3333%; }
+    width: 83.3333%;
+    *width: 83.3023%; }
   .wsui-u-xl-7-8,
   .wsui-u-xl-21-24 {
-    width: 87.5000%; }
+    width: 87.5%;
+    *width: 87.469%; }
   .wsui-u-xl-11-12,
   .wsui-u-xl-22-24 {
-    width: 91.6667%; }
+    width: 91.6667%;
+    *width: 91.6357%; }
   .wsui-u-xl-23-24 {
-    width: 95.8333%; }
+    width: 95.8333%;
+    *width: 95.8023%; }
   .wsui-u-xl-1,
   .wsui-u-xl-1-1,
   .wsui-u-xl-5-5,
   .wsui-u-xl-24-24 {
     width: 100%; } }
-
-/*!
-Pure v2.0.3
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/wsui-css/pure/blob/master/LICENSE.md
-*/
-.wsui-u-1,
-.wsui-u-1-1,
-.wsui-u-1-2,
-.wsui-u-1-3,
-.wsui-u-2-3,
-.wsui-u-1-4,
-.wsui-u-3-4,
-.wsui-u-1-5,
-.wsui-u-2-5,
-.wsui-u-3-5,
-.wsui-u-4-5,
-.wsui-u-5-5,
-.wsui-u-1-6,
-.wsui-u-5-6,
-.wsui-u-1-8,
-.wsui-u-3-8,
-.wsui-u-5-8,
-.wsui-u-7-8,
-.wsui-u-1-12,
-.wsui-u-5-12,
-.wsui-u-7-12,
-.wsui-u-11-12,
-.wsui-u-1-24,
-.wsui-u-2-24,
-.wsui-u-3-24,
-.wsui-u-4-24,
-.wsui-u-5-24,
-.wsui-u-6-24,
-.wsui-u-7-24,
-.wsui-u-8-24,
-.wsui-u-9-24,
-.wsui-u-10-24,
-.wsui-u-11-24,
-.wsui-u-12-24,
-.wsui-u-13-24,
-.wsui-u-14-24,
-.wsui-u-15-24,
-.wsui-u-16-24,
-.wsui-u-17-24,
-.wsui-u-18-24,
-.wsui-u-19-24,
-.wsui-u-20-24,
-.wsui-u-21-24,
-.wsui-u-22-24,
-.wsui-u-23-24,
-.wsui-u-24-24 {
-  display: inline-block;
-  letter-spacing: normal;
-  word-spacing: normal;
-  vertical-align: top;
-  text-rendering: auto; }
-
-.wsui-u-1-24 {
-  width: 4.1667%; }
-
-.wsui-u-1-12,
-.wsui-u-2-24 {
-  width: 8.3333%; }
-
-.wsui-u-1-8,
-.wsui-u-3-24 {
-  width: 12.5000%; }
-
-.wsui-u-1-6,
-.wsui-u-4-24 {
-  width: 16.6667%; }
-
-.wsui-u-1-5 {
-  width: 20%; }
-
-.wsui-u-5-24 {
-  width: 20.8333%; }
-
-.wsui-u-1-4,
-.wsui-u-6-24 {
-  width: 25%; }
-
-.wsui-u-7-24 {
-  width: 29.1667%; }
-
-.wsui-u-1-3,
-.wsui-u-8-24 {
-  width: 33.3333%; }
-
-.wsui-u-3-8,
-.wsui-u-9-24 {
-  width: 37.5000%; }
-
-.wsui-u-2-5 {
-  width: 40%; }
-
-.wsui-u-5-12,
-.wsui-u-10-24 {
-  width: 41.6667%; }
-
-.wsui-u-11-24 {
-  width: 45.8333%; }
-
-.wsui-u-1-2,
-.wsui-u-12-24 {
-  width: 50%; }
-
-.wsui-u-13-24 {
-  width: 54.1667%; }
-
-.wsui-u-7-12,
-.wsui-u-14-24 {
-  width: 58.3333%; }
-
-.wsui-u-3-5 {
-  width: 60%; }
-
-.wsui-u-5-8,
-.wsui-u-15-24 {
-  width: 62.5000%; }
-
-.wsui-u-2-3,
-.wsui-u-16-24 {
-  width: 66.6667%; }
-
-.wsui-u-17-24 {
-  width: 70.8333%; }
-
-.wsui-u-3-4,
-.wsui-u-18-24 {
-  width: 75%; }
-
-.wsui-u-19-24 {
-  width: 79.1667%; }
-
-.wsui-u-4-5 {
-  width: 80%; }
-
-.wsui-u-5-6,
-.wsui-u-20-24 {
-  width: 83.3333%; }
-
-.wsui-u-7-8,
-.wsui-u-21-24 {
-  width: 87.5000%; }
-
-.wsui-u-11-12,
-.wsui-u-22-24 {
-  width: 91.6667%; }
-
-.wsui-u-23-24 {
-  width: 95.8333%; }
-
-.wsui-u-1,
-.wsui-u-1-1,
-.wsui-u-5-5,
-.wsui-u-24-24 {
-  width: 100%; }
-
-/*!
-Pure v2.0.3
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/wsui-css/pure/blob/master/LICENSE.md
-*/
-/*csslint regex-selectors:false, known-properties:false, duplicate-properties:false*/
-.wsui-g {
-  letter-spacing: -0.31em;
-  /* Webkit: collapse white-space between units */
-  text-rendering: optimizespeed;
-  /* Webkit: fixes text-rendering: optimizeLegibility */
-  /*
-    Sets the font stack to fonts known to work properly with the above letter
-    and word spacings. See: https://github.com/wsui-css/pure/issues/41/
-
-    The following font stack makes Pure Grids work on all known environments.
-
-    * FreeSans: Ships with many Linux distros, including Ubuntu
-
-    * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
-      Arial to get picked up by the browser, even though neither is available
-      in Chrome OS.
-
-    * Droid Sans: Ships with all versions of Android.
-
-    * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
-    */
-  font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
-  /* Use flexbox when possible to avoid `letter-spacing` side-effects. */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  /* Prevents distributing space between rows */
-  -ms-flex-line-pack: start;
-  align-content: flex-start; }
-
-/* IE10 display: -ms-flexbox (and display: flex in IE 11) does not work inside a table; fall back to block and rely on font hack */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  table .wsui-g {
-    display: block; } }
-
-/* Opera as of 12 on Windows needs word-spacing.
-   The ".opera-only" selector is used to prevent actual prefocus styling
-   and is not required in markup.
-*/
-.opera-only :-o-prefocus,
-.wsui-g {
-  word-spacing: -0.43em; }
-
-.wsui-u {
-  display: inline-block;
-  letter-spacing: normal;
-  word-spacing: normal;
-  vertical-align: top;
-  text-rendering: auto; }
-
-/*
-Resets the font family back to the OS/browser's default sans-serif font,
-this the same font stack that Normalize.css sets for the `body`.
-*/
-.wsui-g [class*="wsui-u"] {
-  font-family: sans-serif; }
-
-.wsui-u-1,
-.wsui-u-1-1,
-.wsui-u-1-2,
-.wsui-u-1-3,
-.wsui-u-2-3,
-.wsui-u-1-4,
-.wsui-u-3-4,
-.wsui-u-1-5,
-.wsui-u-2-5,
-.wsui-u-3-5,
-.wsui-u-4-5,
-.wsui-u-5-5,
-.wsui-u-1-6,
-.wsui-u-5-6,
-.wsui-u-1-8,
-.wsui-u-3-8,
-.wsui-u-5-8,
-.wsui-u-7-8,
-.wsui-u-1-12,
-.wsui-u-5-12,
-.wsui-u-7-12,
-.wsui-u-11-12,
-.wsui-u-1-24,
-.wsui-u-2-24,
-.wsui-u-3-24,
-.wsui-u-4-24,
-.wsui-u-5-24,
-.wsui-u-6-24,
-.wsui-u-7-24,
-.wsui-u-8-24,
-.wsui-u-9-24,
-.wsui-u-10-24,
-.wsui-u-11-24,
-.wsui-u-12-24,
-.wsui-u-13-24,
-.wsui-u-14-24,
-.wsui-u-15-24,
-.wsui-u-16-24,
-.wsui-u-17-24,
-.wsui-u-18-24,
-.wsui-u-19-24,
-.wsui-u-20-24,
-.wsui-u-21-24,
-.wsui-u-22-24,
-.wsui-u-23-24,
-.wsui-u-24-24 {
-  display: inline-block;
-  letter-spacing: normal;
-  word-spacing: normal;
-  vertical-align: top;
-  text-rendering: auto; }
-
-.wsui-u-1-24 {
-  width: 4.1667%; }
-
-.wsui-u-1-12,
-.wsui-u-2-24 {
-  width: 8.3333%; }
-
-.wsui-u-1-8,
-.wsui-u-3-24 {
-  width: 12.5000%; }
-
-.wsui-u-1-6,
-.wsui-u-4-24 {
-  width: 16.6667%; }
-
-.wsui-u-1-5 {
-  width: 20%; }
-
-.wsui-u-5-24 {
-  width: 20.8333%; }
-
-.wsui-u-1-4,
-.wsui-u-6-24 {
-  width: 25%; }
-
-.wsui-u-7-24 {
-  width: 29.1667%; }
-
-.wsui-u-1-3,
-.wsui-u-8-24 {
-  width: 33.3333%; }
-
-.wsui-u-3-8,
-.wsui-u-9-24 {
-  width: 37.5000%; }
-
-.wsui-u-2-5 {
-  width: 40%; }
-
-.wsui-u-5-12,
-.wsui-u-10-24 {
-  width: 41.6667%; }
-
-.wsui-u-11-24 {
-  width: 45.8333%; }
-
-.wsui-u-1-2,
-.wsui-u-12-24 {
-  width: 50%; }
-
-.wsui-u-13-24 {
-  width: 54.1667%; }
-
-.wsui-u-7-12,
-.wsui-u-14-24 {
-  width: 58.3333%; }
-
-.wsui-u-3-5 {
-  width: 60%; }
-
-.wsui-u-5-8,
-.wsui-u-15-24 {
-  width: 62.5000%; }
-
-.wsui-u-2-3,
-.wsui-u-16-24 {
-  width: 66.6667%; }
-
-.wsui-u-17-24 {
-  width: 70.8333%; }
-
-.wsui-u-3-4,
-.wsui-u-18-24 {
-  width: 75%; }
-
-.wsui-u-19-24 {
-  width: 79.1667%; }
-
-.wsui-u-4-5 {
-  width: 80%; }
-
-.wsui-u-5-6,
-.wsui-u-20-24 {
-  width: 83.3333%; }
-
-.wsui-u-7-8,
-.wsui-u-21-24 {
-  width: 87.5000%; }
-
-.wsui-u-11-12,
-.wsui-u-22-24 {
-  width: 91.6667%; }
-
-.wsui-u-23-24 {
-  width: 95.8333%; }
-
-.wsui-u-1,
-.wsui-u-1-1,
-.wsui-u-5-5,
-.wsui-u-24-24 {
-  width: 100%; }

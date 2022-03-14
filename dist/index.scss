@@ -2,65 +2,67 @@
  * name: @jswork/wsui-purecss-grid
  * description: Responsive percentage grid system use purecss.
  * homepage: https://github.com/afeiship/wsui-purecss-grid
- * version: 1.0.1
- * date: 2020-11-25 17:32:42
+ * version: 1.0.2
+ * date: 2022-03-14 22:28:44
  * license: MIT
  */
 
 /*wsui-purecss-grid Start*/
 $wsui-purecss-grid-prefix: "wsui-" !default;
+$sm-breakpoint: 35.5em !default;
+$md-breakpoint: 48em !default;
+$lg-breakpoint: 64em !default;
+$xl-breakpoint: 80em !default;
+$include-responsive-grid: true !default;
 // @thanks to: https://purecss.io/grids/
 /*wsui-purecss-grid End*/
 
-/*!
-Pure v2.0.3
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
-*/
-/*csslint regex-selectors:false, known-properties:false, duplicate-properties:false*/
+/* grids */
+// @import "./grids/grids-core";
+// @import "./grids/grids-units";
 
 .#{$wsui-purecss-grid-prefix}g {
-    letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
-    text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+  letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+  *letter-spacing: normal; /* reset IE < 8 */
+  *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
 
-    /*
-    Sets the font stack to fonts known to work properly with the above letter
-    and word spacings. See: https://github.com/#{$wsui-purecss-grid-prefix}css/pure/issues/41/
+  /*
+  Sets the font stack to fonts known to work properly with the above letter
+  and word spacings. See: https://github.com/yahoo/pure/issues/41/
 
-    The following font stack makes Pure Grids work on all known environments.
+  The following font stack makes Pure Grids work on all known environments.
 
-    * FreeSans: Ships with many Linux distros, including Ubuntu
+  * FreeSans: Ships with many Linux distros, including Ubuntu
 
-    * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
-      Arial to get picked up by the browser, even though neither is available
-      in Chrome OS.
+  * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
+    Arial to get picked up by the browser, even though neither is available
+    in Chrome OS.
 
-    * Droid Sans: Ships with all versions of Android.
+  * Droid Sans: Ships with all versions of Android.
 
-    * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
-    */
-    font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+  * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
+  */
+  font-family: Helvetica, Arial, sans-serif;
 
-    /* Use flexbox when possible to avoid `letter-spacing` side-effects. */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
+  /*
+  Use flexbox when possible to avoid `letter-spacing` side-effects.
 
-    /* Prevents distributing space between rows */
-    -ms-flex-line-pack: start;
-        align-content: flex-start;
-}
+  NOTE: Firefox (as of 25) does not currently support flex-wrap, so the
+  `-moz-` prefix version is omitted.
+  */
 
-/* IE10 display: -ms-flexbox (and display: flex in IE 11) does not work inside a table; fall back to block and rely on font hack */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-	table .#{$wsui-purecss-grid-prefix}g {
-		display: block;
-	}
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+
+  /* IE10 uses display: flexbox */
+  display: -ms-flexbox;
+  -ms-flex-flow: row wrap;
+
+  /* Prevents distributing space between rows */
+  -ms-align-content: flex-start;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
 }
 
 /* Opera as of 12 on Windows needs word-spacing.
@@ -69,15 +71,17 @@ https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
 */
 .opera-only :-o-prefocus,
 .#{$wsui-purecss-grid-prefix}g {
-    word-spacing: -0.43em;
+  word-spacing: -0.43em;
 }
 
 .#{$wsui-purecss-grid-prefix}u {
-    display: inline-block;
-    letter-spacing: normal;
-    word-spacing: normal;
-    vertical-align: top;
-    text-rendering: auto;
+  display: inline-block;
+  *display: inline; /* IE < 8: fake inline-block */
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
 }
 
 /*
@@ -85,16 +89,170 @@ Resets the font family back to the OS/browser's default sans-serif font,
 this the same font stack that Normalize.css sets for the `body`.
 */
 .#{$wsui-purecss-grid-prefix}g [class *= "#{$wsui-purecss-grid-prefix}u"] {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
-/*!
-Pure v2.0.3
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
-*/
-@media screen and (min-width: 35.5em) {
+// this file is not present in the original project, they generate it at build time
+
+.#{$wsui-purecss-grid-prefix}u-1,.#{$wsui-purecss-grid-prefix}u-1-1,.#{$wsui-purecss-grid-prefix}u-1-2,.#{$wsui-purecss-grid-prefix}u-1-3,.#{$wsui-purecss-grid-prefix}u-2-3,.#{$wsui-purecss-grid-prefix}u-1-4,.#{$wsui-purecss-grid-prefix}u-3-4,.#{$wsui-purecss-grid-prefix}u-1-5,.#{$wsui-purecss-grid-prefix}u-2-5,.#{$wsui-purecss-grid-prefix}u-3-5,.#{$wsui-purecss-grid-prefix}u-4-5,.#{$wsui-purecss-grid-prefix}u-5-5,.#{$wsui-purecss-grid-prefix}u-1-6,.#{$wsui-purecss-grid-prefix}u-5-6,.#{$wsui-purecss-grid-prefix}u-1-8,.#{$wsui-purecss-grid-prefix}u-3-8,.#{$wsui-purecss-grid-prefix}u-5-8,.#{$wsui-purecss-grid-prefix}u-7-8,.#{$wsui-purecss-grid-prefix}u-1-12,.#{$wsui-purecss-grid-prefix}u-5-12,.#{$wsui-purecss-grid-prefix}u-7-12,.#{$wsui-purecss-grid-prefix}u-11-12,.#{$wsui-purecss-grid-prefix}u-1-24,.#{$wsui-purecss-grid-prefix}u-2-24,.#{$wsui-purecss-grid-prefix}u-3-24,.#{$wsui-purecss-grid-prefix}u-4-24,.#{$wsui-purecss-grid-prefix}u-5-24,.#{$wsui-purecss-grid-prefix}u-6-24,.#{$wsui-purecss-grid-prefix}u-7-24,.#{$wsui-purecss-grid-prefix}u-8-24,.#{$wsui-purecss-grid-prefix}u-9-24,.#{$wsui-purecss-grid-prefix}u-10-24,.#{$wsui-purecss-grid-prefix}u-11-24,.#{$wsui-purecss-grid-prefix}u-12-24,
+.#{$wsui-purecss-grid-prefix}u-13-24,.#{$wsui-purecss-grid-prefix}u-14-24,.#{$wsui-purecss-grid-prefix}u-15-24,.#{$wsui-purecss-grid-prefix}u-16-24,.#{$wsui-purecss-grid-prefix}u-17-24,.#{$wsui-purecss-grid-prefix}u-18-24,.#{$wsui-purecss-grid-prefix}u-19-24,.#{$wsui-purecss-grid-prefix}u-20-24,.#{$wsui-purecss-grid-prefix}u-21-24,.#{$wsui-purecss-grid-prefix}u-22-24,.#{$wsui-purecss-grid-prefix}u-23-24,.#{$wsui-purecss-grid-prefix}u-24-24 {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	letter-spacing: normal;
+	word-spacing: normal;
+	vertical-align: top;
+	text-rendering: auto;
+}
+
+.#{$wsui-purecss-grid-prefix}u-1-24 {
+	width: 4.1667%;
+	*width: 4.1357%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-1-12,.#{$wsui-purecss-grid-prefix}u-2-24 {
+	width: 8.3333%;
+	*width: 8.3023%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-1-8,.#{$wsui-purecss-grid-prefix}u-3-24 {
+	width:12.5%;
+	*width:12.469%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-1-6,.#{$wsui-purecss-grid-prefix}u-4-24 {
+	width:16.6667%;
+	*width:16.6357%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-1-5 {
+	width:20%;
+	*width:19.969%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-5-24 {
+	width:20.8333%;
+	*width:20.8023%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-1-4,.#{$wsui-purecss-grid-prefix}u-6-24 {
+	width:25%;
+	*width:24.969%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-7-24 {
+	width:29.1667%;
+	*width:29.1357%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-1-3,.#{$wsui-purecss-grid-prefix}u-8-24 {
+	width:33.3333%;
+	*width:33.3023%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-3-8,.#{$wsui-purecss-grid-prefix}u-9-24 {
+	width:37.5%;
+	*width:37.469%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-2-5 {
+	width:40%;
+	*width:39.969%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-5-12,.#{$wsui-purecss-grid-prefix}u-10-24 {
+	width:41.6667%;
+	*width:41.6357%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-11-24 {
+	width:45.8333%;
+	*width:45.8023%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-1-2,.#{$wsui-purecss-grid-prefix}u-12-24 {
+	width:50%;
+	*width:49.969%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-13-24 {
+	width:54.1667%;
+	*width:54.1357%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-7-12,.#{$wsui-purecss-grid-prefix}u-14-24 {
+	width:58.3333%;
+	*width:58.3023%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-3-5 {
+	width:60%;
+	*width:59.969%;
+}
+
+.#{$wsui-purecss-grid-prefix}u-5-8,.#{$wsui-purecss-grid-prefix}u-15-24{
+	width:62.5%;
+	*width:62.469%
+}
+
+.#{$wsui-purecss-grid-prefix}u-2-3,.#{$wsui-purecss-grid-prefix}u-16-24 {
+	width:66.6667%;
+	*width:66.6357%
+}
+
+.#{$wsui-purecss-grid-prefix}u-17-24 {
+	width:70.8333%;
+	*width:70.8023%
+}
+
+.#{$wsui-purecss-grid-prefix}u-3-4,.#{$wsui-purecss-grid-prefix}u-18-24 {
+	width:75%;
+	*width:74.969%
+}
+
+.#{$wsui-purecss-grid-prefix}u-19-24 {
+	width:79.1667%;
+	*width:79.1357%
+}
+
+.#{$wsui-purecss-grid-prefix}u-4-5 {
+	width:80%;
+	*width:79.969%
+}
+
+.#{$wsui-purecss-grid-prefix}u-5-6,.#{$wsui-purecss-grid-prefix}u-20-24 {
+	width:83.3333%;
+	*width:83.3023%
+}
+
+.#{$wsui-purecss-grid-prefix}u-7-8,.#{$wsui-purecss-grid-prefix}u-21-24 {
+	width:87.5%;
+	*width:87.469%
+}
+
+.#{$wsui-purecss-grid-prefix}u-11-12,.#{$wsui-purecss-grid-prefix}u-22-24 {
+	width:91.6667%;
+	*width:91.6357%
+}
+
+.#{$wsui-purecss-grid-prefix}u-23-24 {
+	width:95.8333%;
+	*width:95.8023%
+}
+
+.#{$wsui-purecss-grid-prefix}u-1,.#{$wsui-purecss-grid-prefix}u-1-1,.#{$wsui-purecss-grid-prefix}u-5-5,.#{$wsui-purecss-grid-prefix}u-24-24 {
+	width:100%
+}
+
+@mixin responsive-grid {
+  /*!
+  Pure v0.6.0
+  Copyright 2014 Yahoo! Inc. All rights reserved.
+  Licensed under the BSD License.
+  https://github.com/yahoo/pure/blob/master/LICENSE.md
+  */
+
+  @media screen and (min-width: $sm-breakpoint) {
     .#{$wsui-purecss-grid-prefix}u-sm-1,
     .#{$wsui-purecss-grid-prefix}u-sm-1-1,
     .#{$wsui-purecss-grid-prefix}u-sm-1-2,
@@ -141,145 +299,174 @@ https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
     .#{$wsui-purecss-grid-prefix}u-sm-22-24,
     .#{$wsui-purecss-grid-prefix}u-sm-23-24,
     .#{$wsui-purecss-grid-prefix}u-sm-24-24 {
-        display: inline-block;
-        letter-spacing: normal;
-        word-spacing: normal;
-        vertical-align: top;
-        text-rendering: auto;
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      letter-spacing: normal;
+      word-spacing: normal;
+      vertical-align: top;
+      text-rendering: auto;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1-24 {
-        width: 4.1667%;
+      width: 4.1667%;
+      *width: 4.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1-12,
     .#{$wsui-purecss-grid-prefix}u-sm-2-24 {
-        width: 8.3333%;
+      width: 8.3333%;
+      *width: 8.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1-8,
     .#{$wsui-purecss-grid-prefix}u-sm-3-24 {
-        width: 12.5000%;
+      width: 12.5%;
+      *width: 12.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1-6,
     .#{$wsui-purecss-grid-prefix}u-sm-4-24 {
-        width: 16.6667%;
+      width: 16.6667%;
+      *width: 16.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1-5 {
-        width: 20%;
+      width: 20%;
+      *width: 19.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-5-24 {
-        width: 20.8333%;
+      width: 20.8333%;
+      *width: 20.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1-4,
     .#{$wsui-purecss-grid-prefix}u-sm-6-24 {
-        width: 25%;
+      width: 25%;
+      *width: 24.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-7-24 {
-        width: 29.1667%;
+      width: 29.1667%;
+      *width: 29.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1-3,
     .#{$wsui-purecss-grid-prefix}u-sm-8-24 {
-        width: 33.3333%;
+      width: 33.3333%;
+      *width: 33.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-3-8,
     .#{$wsui-purecss-grid-prefix}u-sm-9-24 {
-        width: 37.5000%;
+      width: 37.5%;
+      *width: 37.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-2-5 {
-        width: 40%;
+      width: 40%;
+      *width: 39.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-5-12,
     .#{$wsui-purecss-grid-prefix}u-sm-10-24 {
-        width: 41.6667%;
+      width: 41.6667%;
+      *width: 41.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-11-24 {
-        width: 45.8333%;
+      width: 45.8333%;
+      *width: 45.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1-2,
     .#{$wsui-purecss-grid-prefix}u-sm-12-24 {
-        width: 50%;
+      width: 50%;
+      *width: 49.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-13-24 {
-        width: 54.1667%;
+      width: 54.1667%;
+      *width: 54.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-7-12,
     .#{$wsui-purecss-grid-prefix}u-sm-14-24 {
-        width: 58.3333%;
+      width: 58.3333%;
+      *width: 58.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-3-5 {
-        width: 60%;
+      width: 60%;
+      *width: 59.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-5-8,
     .#{$wsui-purecss-grid-prefix}u-sm-15-24 {
-        width: 62.5000%;
+      width: 62.5%;
+      *width: 62.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-2-3,
     .#{$wsui-purecss-grid-prefix}u-sm-16-24 {
-        width: 66.6667%;
+      width: 66.6667%;
+      *width: 66.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-17-24 {
-        width: 70.8333%;
+      width: 70.8333%;
+      *width: 70.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-3-4,
     .#{$wsui-purecss-grid-prefix}u-sm-18-24 {
-        width: 75%;
+      width: 75%;
+      *width: 74.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-19-24 {
-        width: 79.1667%;
+      width: 79.1667%;
+      *width: 79.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-4-5 {
-        width: 80%;
+      width: 80%;
+      *width: 79.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-5-6,
     .#{$wsui-purecss-grid-prefix}u-sm-20-24 {
-        width: 83.3333%;
+      width: 83.3333%;
+      *width: 83.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-7-8,
     .#{$wsui-purecss-grid-prefix}u-sm-21-24 {
-        width: 87.5000%;
+      width: 87.5%;
+      *width: 87.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-11-12,
     .#{$wsui-purecss-grid-prefix}u-sm-22-24 {
-        width: 91.6667%;
+      width: 91.6667%;
+      *width: 91.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-23-24 {
-        width: 95.8333%;
+      width: 95.8333%;
+      *width: 95.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-sm-1,
     .#{$wsui-purecss-grid-prefix}u-sm-1-1,
     .#{$wsui-purecss-grid-prefix}u-sm-5-5,
     .#{$wsui-purecss-grid-prefix}u-sm-24-24 {
-        width: 100%;
+      width: 100%;
     }
-}
+  }
 
-@media screen and (min-width: 48em) {
+  @media screen and (min-width: $md-breakpoint) {
     .#{$wsui-purecss-grid-prefix}u-md-1,
     .#{$wsui-purecss-grid-prefix}u-md-1-1,
     .#{$wsui-purecss-grid-prefix}u-md-1-2,
@@ -326,145 +513,174 @@ https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
     .#{$wsui-purecss-grid-prefix}u-md-22-24,
     .#{$wsui-purecss-grid-prefix}u-md-23-24,
     .#{$wsui-purecss-grid-prefix}u-md-24-24 {
-        display: inline-block;
-        letter-spacing: normal;
-        word-spacing: normal;
-        vertical-align: top;
-        text-rendering: auto;
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      letter-spacing: normal;
+      word-spacing: normal;
+      vertical-align: top;
+      text-rendering: auto;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1-24 {
-        width: 4.1667%;
+      width: 4.1667%;
+      *width: 4.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1-12,
     .#{$wsui-purecss-grid-prefix}u-md-2-24 {
-        width: 8.3333%;
+      width: 8.3333%;
+      *width: 8.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1-8,
     .#{$wsui-purecss-grid-prefix}u-md-3-24 {
-        width: 12.5000%;
+      width: 12.5%;
+      *width: 12.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1-6,
     .#{$wsui-purecss-grid-prefix}u-md-4-24 {
-        width: 16.6667%;
+      width: 16.6667%;
+      *width: 16.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1-5 {
-        width: 20%;
+      width: 20%;
+      *width: 19.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-5-24 {
-        width: 20.8333%;
+      width: 20.8333%;
+      *width: 20.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1-4,
     .#{$wsui-purecss-grid-prefix}u-md-6-24 {
-        width: 25%;
+      width: 25%;
+      *width: 24.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-7-24 {
-        width: 29.1667%;
+      width: 29.1667%;
+      *width: 29.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1-3,
     .#{$wsui-purecss-grid-prefix}u-md-8-24 {
-        width: 33.3333%;
+      width: 33.3333%;
+      *width: 33.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-3-8,
     .#{$wsui-purecss-grid-prefix}u-md-9-24 {
-        width: 37.5000%;
+      width: 37.5%;
+      *width: 37.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-2-5 {
-        width: 40%;
+      width: 40%;
+      *width: 39.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-5-12,
     .#{$wsui-purecss-grid-prefix}u-md-10-24 {
-        width: 41.6667%;
+      width: 41.6667%;
+      *width: 41.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-11-24 {
-        width: 45.8333%;
+      width: 45.8333%;
+      *width: 45.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1-2,
     .#{$wsui-purecss-grid-prefix}u-md-12-24 {
-        width: 50%;
+      width: 50%;
+      *width: 49.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-13-24 {
-        width: 54.1667%;
+      width: 54.1667%;
+      *width: 54.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-7-12,
     .#{$wsui-purecss-grid-prefix}u-md-14-24 {
-        width: 58.3333%;
+      width: 58.3333%;
+      *width: 58.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-3-5 {
-        width: 60%;
+      width: 60%;
+      *width: 59.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-5-8,
     .#{$wsui-purecss-grid-prefix}u-md-15-24 {
-        width: 62.5000%;
+      width: 62.5%;
+      *width: 62.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-2-3,
     .#{$wsui-purecss-grid-prefix}u-md-16-24 {
-        width: 66.6667%;
+      width: 66.6667%;
+      *width: 66.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-17-24 {
-        width: 70.8333%;
+      width: 70.8333%;
+      *width: 70.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-3-4,
     .#{$wsui-purecss-grid-prefix}u-md-18-24 {
-        width: 75%;
+      width: 75%;
+      *width: 74.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-19-24 {
-        width: 79.1667%;
+      width: 79.1667%;
+      *width: 79.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-4-5 {
-        width: 80%;
+      width: 80%;
+      *width: 79.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-5-6,
     .#{$wsui-purecss-grid-prefix}u-md-20-24 {
-        width: 83.3333%;
+      width: 83.3333%;
+      *width: 83.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-7-8,
     .#{$wsui-purecss-grid-prefix}u-md-21-24 {
-        width: 87.5000%;
+      width: 87.5%;
+      *width: 87.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-11-12,
     .#{$wsui-purecss-grid-prefix}u-md-22-24 {
-        width: 91.6667%;
+      width: 91.6667%;
+      *width: 91.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-23-24 {
-        width: 95.8333%;
+      width: 95.8333%;
+      *width: 95.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-md-1,
     .#{$wsui-purecss-grid-prefix}u-md-1-1,
     .#{$wsui-purecss-grid-prefix}u-md-5-5,
     .#{$wsui-purecss-grid-prefix}u-md-24-24 {
-        width: 100%;
+      width: 100%;
     }
-}
+  }
 
-@media screen and (min-width: 64em) {
+  @media screen and (min-width: $lg-breakpoint) {
     .#{$wsui-purecss-grid-prefix}u-lg-1,
     .#{$wsui-purecss-grid-prefix}u-lg-1-1,
     .#{$wsui-purecss-grid-prefix}u-lg-1-2,
@@ -511,145 +727,174 @@ https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
     .#{$wsui-purecss-grid-prefix}u-lg-22-24,
     .#{$wsui-purecss-grid-prefix}u-lg-23-24,
     .#{$wsui-purecss-grid-prefix}u-lg-24-24 {
-        display: inline-block;
-        letter-spacing: normal;
-        word-spacing: normal;
-        vertical-align: top;
-        text-rendering: auto;
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      letter-spacing: normal;
+      word-spacing: normal;
+      vertical-align: top;
+      text-rendering: auto;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1-24 {
-        width: 4.1667%;
+      width: 4.1667%;
+      *width: 4.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1-12,
     .#{$wsui-purecss-grid-prefix}u-lg-2-24 {
-        width: 8.3333%;
+      width: 8.3333%;
+      *width: 8.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1-8,
     .#{$wsui-purecss-grid-prefix}u-lg-3-24 {
-        width: 12.5000%;
+      width: 12.5%;
+      *width: 12.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1-6,
     .#{$wsui-purecss-grid-prefix}u-lg-4-24 {
-        width: 16.6667%;
+      width: 16.6667%;
+      *width: 16.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1-5 {
-        width: 20%;
+      width: 20%;
+      *width: 19.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-5-24 {
-        width: 20.8333%;
+      width: 20.8333%;
+      *width: 20.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1-4,
     .#{$wsui-purecss-grid-prefix}u-lg-6-24 {
-        width: 25%;
+      width: 25%;
+      *width: 24.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-7-24 {
-        width: 29.1667%;
+      width: 29.1667%;
+      *width: 29.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1-3,
     .#{$wsui-purecss-grid-prefix}u-lg-8-24 {
-        width: 33.3333%;
+      width: 33.3333%;
+      *width: 33.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-3-8,
     .#{$wsui-purecss-grid-prefix}u-lg-9-24 {
-        width: 37.5000%;
+      width: 37.5%;
+      *width: 37.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-2-5 {
-        width: 40%;
+      width: 40%;
+      *width: 39.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-5-12,
     .#{$wsui-purecss-grid-prefix}u-lg-10-24 {
-        width: 41.6667%;
+      width: 41.6667%;
+      *width: 41.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-11-24 {
-        width: 45.8333%;
+      width: 45.8333%;
+      *width: 45.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1-2,
     .#{$wsui-purecss-grid-prefix}u-lg-12-24 {
-        width: 50%;
+      width: 50%;
+      *width: 49.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-13-24 {
-        width: 54.1667%;
+      width: 54.1667%;
+      *width: 54.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-7-12,
     .#{$wsui-purecss-grid-prefix}u-lg-14-24 {
-        width: 58.3333%;
+      width: 58.3333%;
+      *width: 58.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-3-5 {
-        width: 60%;
+      width: 60%;
+      *width: 59.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-5-8,
     .#{$wsui-purecss-grid-prefix}u-lg-15-24 {
-        width: 62.5000%;
+      width: 62.5%;
+      *width: 62.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-2-3,
     .#{$wsui-purecss-grid-prefix}u-lg-16-24 {
-        width: 66.6667%;
+      width: 66.6667%;
+      *width: 66.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-17-24 {
-        width: 70.8333%;
+      width: 70.8333%;
+      *width: 70.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-3-4,
     .#{$wsui-purecss-grid-prefix}u-lg-18-24 {
-        width: 75%;
+      width: 75%;
+      *width: 74.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-19-24 {
-        width: 79.1667%;
+      width: 79.1667%;
+      *width: 79.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-4-5 {
-        width: 80%;
+      width: 80%;
+      *width: 79.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-5-6,
     .#{$wsui-purecss-grid-prefix}u-lg-20-24 {
-        width: 83.3333%;
+      width: 83.3333%;
+      *width: 83.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-7-8,
     .#{$wsui-purecss-grid-prefix}u-lg-21-24 {
-        width: 87.5000%;
+      width: 87.5%;
+      *width: 87.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-11-12,
     .#{$wsui-purecss-grid-prefix}u-lg-22-24 {
-        width: 91.6667%;
+      width: 91.6667%;
+      *width: 91.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-23-24 {
-        width: 95.8333%;
+      width: 95.8333%;
+      *width: 95.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-lg-1,
     .#{$wsui-purecss-grid-prefix}u-lg-1-1,
     .#{$wsui-purecss-grid-prefix}u-lg-5-5,
     .#{$wsui-purecss-grid-prefix}u-lg-24-24 {
-        width: 100%;
+      width: 100%;
     }
-}
+  }
 
-@media screen and (min-width: 80em) {
+  @media screen and (min-width: $xl-breakpoint) {
     .#{$wsui-purecss-grid-prefix}u-xl-1,
     .#{$wsui-purecss-grid-prefix}u-xl-1-1,
     .#{$wsui-purecss-grid-prefix}u-xl-1-2,
@@ -696,586 +941,174 @@ https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
     .#{$wsui-purecss-grid-prefix}u-xl-22-24,
     .#{$wsui-purecss-grid-prefix}u-xl-23-24,
     .#{$wsui-purecss-grid-prefix}u-xl-24-24 {
-        display: inline-block;
-        letter-spacing: normal;
-        word-spacing: normal;
-        vertical-align: top;
-        text-rendering: auto;
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      letter-spacing: normal;
+      word-spacing: normal;
+      vertical-align: top;
+      text-rendering: auto;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1-24 {
-        width: 4.1667%;
+      width: 4.1667%;
+      *width: 4.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1-12,
     .#{$wsui-purecss-grid-prefix}u-xl-2-24 {
-        width: 8.3333%;
+      width: 8.3333%;
+      *width: 8.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1-8,
     .#{$wsui-purecss-grid-prefix}u-xl-3-24 {
-        width: 12.5000%;
+      width: 12.5%;
+      *width: 12.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1-6,
     .#{$wsui-purecss-grid-prefix}u-xl-4-24 {
-        width: 16.6667%;
+      width: 16.6667%;
+      *width: 16.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1-5 {
-        width: 20%;
+      width: 20%;
+      *width: 19.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-5-24 {
-        width: 20.8333%;
+      width: 20.8333%;
+      *width: 20.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1-4,
     .#{$wsui-purecss-grid-prefix}u-xl-6-24 {
-        width: 25%;
+      width: 25%;
+      *width: 24.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-7-24 {
-        width: 29.1667%;
+      width: 29.1667%;
+      *width: 29.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1-3,
     .#{$wsui-purecss-grid-prefix}u-xl-8-24 {
-        width: 33.3333%;
+      width: 33.3333%;
+      *width: 33.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-3-8,
     .#{$wsui-purecss-grid-prefix}u-xl-9-24 {
-        width: 37.5000%;
+      width: 37.5%;
+      *width: 37.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-2-5 {
-        width: 40%;
+      width: 40%;
+      *width: 39.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-5-12,
     .#{$wsui-purecss-grid-prefix}u-xl-10-24 {
-        width: 41.6667%;
+      width: 41.6667%;
+      *width: 41.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-11-24 {
-        width: 45.8333%;
+      width: 45.8333%;
+      *width: 45.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1-2,
     .#{$wsui-purecss-grid-prefix}u-xl-12-24 {
-        width: 50%;
+      width: 50%;
+      *width: 49.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-13-24 {
-        width: 54.1667%;
+      width: 54.1667%;
+      *width: 54.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-7-12,
     .#{$wsui-purecss-grid-prefix}u-xl-14-24 {
-        width: 58.3333%;
+      width: 58.3333%;
+      *width: 58.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-3-5 {
-        width: 60%;
+      width: 60%;
+      *width: 59.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-5-8,
     .#{$wsui-purecss-grid-prefix}u-xl-15-24 {
-        width: 62.5000%;
+      width: 62.5%;
+      *width: 62.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-2-3,
     .#{$wsui-purecss-grid-prefix}u-xl-16-24 {
-        width: 66.6667%;
+      width: 66.6667%;
+      *width: 66.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-17-24 {
-        width: 70.8333%;
+      width: 70.8333%;
+      *width: 70.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-3-4,
     .#{$wsui-purecss-grid-prefix}u-xl-18-24 {
-        width: 75%;
+      width: 75%;
+      *width: 74.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-19-24 {
-        width: 79.1667%;
+      width: 79.1667%;
+      *width: 79.1357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-4-5 {
-        width: 80%;
+      width: 80%;
+      *width: 79.969%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-5-6,
     .#{$wsui-purecss-grid-prefix}u-xl-20-24 {
-        width: 83.3333%;
+      width: 83.3333%;
+      *width: 83.3023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-7-8,
     .#{$wsui-purecss-grid-prefix}u-xl-21-24 {
-        width: 87.5000%;
+      width: 87.5%;
+      *width: 87.469%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-11-12,
     .#{$wsui-purecss-grid-prefix}u-xl-22-24 {
-        width: 91.6667%;
+      width: 91.6667%;
+      *width: 91.6357%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-23-24 {
-        width: 95.8333%;
+      width: 95.8333%;
+      *width: 95.8023%;
     }
 
     .#{$wsui-purecss-grid-prefix}u-xl-1,
     .#{$wsui-purecss-grid-prefix}u-xl-1-1,
     .#{$wsui-purecss-grid-prefix}u-xl-5-5,
     .#{$wsui-purecss-grid-prefix}u-xl-24-24 {
-        width: 100%;
+      width: 100%;
     }
-}
-/*!
-Pure v2.0.3
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
-*/
-.#{$wsui-purecss-grid-prefix}u-1,
-.#{$wsui-purecss-grid-prefix}u-1-1,
-.#{$wsui-purecss-grid-prefix}u-1-2,
-.#{$wsui-purecss-grid-prefix}u-1-3,
-.#{$wsui-purecss-grid-prefix}u-2-3,
-.#{$wsui-purecss-grid-prefix}u-1-4,
-.#{$wsui-purecss-grid-prefix}u-3-4,
-.#{$wsui-purecss-grid-prefix}u-1-5,
-.#{$wsui-purecss-grid-prefix}u-2-5,
-.#{$wsui-purecss-grid-prefix}u-3-5,
-.#{$wsui-purecss-grid-prefix}u-4-5,
-.#{$wsui-purecss-grid-prefix}u-5-5,
-.#{$wsui-purecss-grid-prefix}u-1-6,
-.#{$wsui-purecss-grid-prefix}u-5-6,
-.#{$wsui-purecss-grid-prefix}u-1-8,
-.#{$wsui-purecss-grid-prefix}u-3-8,
-.#{$wsui-purecss-grid-prefix}u-5-8,
-.#{$wsui-purecss-grid-prefix}u-7-8,
-.#{$wsui-purecss-grid-prefix}u-1-12,
-.#{$wsui-purecss-grid-prefix}u-5-12,
-.#{$wsui-purecss-grid-prefix}u-7-12,
-.#{$wsui-purecss-grid-prefix}u-11-12,
-.#{$wsui-purecss-grid-prefix}u-1-24,
-.#{$wsui-purecss-grid-prefix}u-2-24,
-.#{$wsui-purecss-grid-prefix}u-3-24,
-.#{$wsui-purecss-grid-prefix}u-4-24,
-.#{$wsui-purecss-grid-prefix}u-5-24,
-.#{$wsui-purecss-grid-prefix}u-6-24,
-.#{$wsui-purecss-grid-prefix}u-7-24,
-.#{$wsui-purecss-grid-prefix}u-8-24,
-.#{$wsui-purecss-grid-prefix}u-9-24,
-.#{$wsui-purecss-grid-prefix}u-10-24,
-.#{$wsui-purecss-grid-prefix}u-11-24,
-.#{$wsui-purecss-grid-prefix}u-12-24,
-.#{$wsui-purecss-grid-prefix}u-13-24,
-.#{$wsui-purecss-grid-prefix}u-14-24,
-.#{$wsui-purecss-grid-prefix}u-15-24,
-.#{$wsui-purecss-grid-prefix}u-16-24,
-.#{$wsui-purecss-grid-prefix}u-17-24,
-.#{$wsui-purecss-grid-prefix}u-18-24,
-.#{$wsui-purecss-grid-prefix}u-19-24,
-.#{$wsui-purecss-grid-prefix}u-20-24,
-.#{$wsui-purecss-grid-prefix}u-21-24,
-.#{$wsui-purecss-grid-prefix}u-22-24,
-.#{$wsui-purecss-grid-prefix}u-23-24,
-.#{$wsui-purecss-grid-prefix}u-24-24 {
-    display: inline-block;
-    letter-spacing: normal;
-    word-spacing: normal;
-    vertical-align: top;
-    text-rendering: auto;
+  }
 }
 
-.#{$wsui-purecss-grid-prefix}u-1-24 {
-    width: 4.1667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-12,
-.#{$wsui-purecss-grid-prefix}u-2-24 {
-    width: 8.3333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-8,
-.#{$wsui-purecss-grid-prefix}u-3-24 {
-    width: 12.5000%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-6,
-.#{$wsui-purecss-grid-prefix}u-4-24 {
-    width: 16.6667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-5 {
-    width: 20%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-5-24 {
-    width: 20.8333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-4,
-.#{$wsui-purecss-grid-prefix}u-6-24 {
-    width: 25%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-7-24 {
-    width: 29.1667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-3,
-.#{$wsui-purecss-grid-prefix}u-8-24 {
-    width: 33.3333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-3-8,
-.#{$wsui-purecss-grid-prefix}u-9-24 {
-    width: 37.5000%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-2-5 {
-    width: 40%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-5-12,
-.#{$wsui-purecss-grid-prefix}u-10-24 {
-    width: 41.6667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-11-24 {
-    width: 45.8333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-2,
-.#{$wsui-purecss-grid-prefix}u-12-24 {
-    width: 50%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-13-24 {
-    width: 54.1667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-7-12,
-.#{$wsui-purecss-grid-prefix}u-14-24 {
-    width: 58.3333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-3-5 {
-    width: 60%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-5-8,
-.#{$wsui-purecss-grid-prefix}u-15-24 {
-    width: 62.5000%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-2-3,
-.#{$wsui-purecss-grid-prefix}u-16-24 {
-    width: 66.6667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-17-24 {
-    width: 70.8333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-3-4,
-.#{$wsui-purecss-grid-prefix}u-18-24 {
-    width: 75%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-19-24 {
-    width: 79.1667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-4-5 {
-    width: 80%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-5-6,
-.#{$wsui-purecss-grid-prefix}u-20-24 {
-    width: 83.3333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-7-8,
-.#{$wsui-purecss-grid-prefix}u-21-24 {
-    width: 87.5000%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-11-12,
-.#{$wsui-purecss-grid-prefix}u-22-24 {
-    width: 91.6667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-23-24 {
-    width: 95.8333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1,
-.#{$wsui-purecss-grid-prefix}u-1-1,
-.#{$wsui-purecss-grid-prefix}u-5-5,
-.#{$wsui-purecss-grid-prefix}u-24-24 {
-    width: 100%;
-}
-/*!
-Pure v2.0.3
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/#{$wsui-purecss-grid-prefix}css/pure/blob/master/LICENSE.md
-*/
-/*csslint regex-selectors:false, known-properties:false, duplicate-properties:false*/
-
-.#{$wsui-purecss-grid-prefix}g {
-    letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
-    text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
-
-    /*
-    Sets the font stack to fonts known to work properly with the above letter
-    and word spacings. See: https://github.com/#{$wsui-purecss-grid-prefix}css/pure/issues/41/
-
-    The following font stack makes Pure Grids work on all known environments.
-
-    * FreeSans: Ships with many Linux distros, including Ubuntu
-
-    * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
-      Arial to get picked up by the browser, even though neither is available
-      in Chrome OS.
-
-    * Droid Sans: Ships with all versions of Android.
-
-    * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
-    */
-    font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
-
-    /* Use flexbox when possible to avoid `letter-spacing` side-effects. */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-
-    /* Prevents distributing space between rows */
-    -ms-flex-line-pack: start;
-        align-content: flex-start;
-}
-
-/* IE10 display: -ms-flexbox (and display: flex in IE 11) does not work inside a table; fall back to block and rely on font hack */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-	table .#{$wsui-purecss-grid-prefix}g {
-		display: block;
-	}
-}
-
-/* Opera as of 12 on Windows needs word-spacing.
-   The ".opera-only" selector is used to prevent actual prefocus styling
-   and is not required in markup.
-*/
-.opera-only :-o-prefocus,
-.#{$wsui-purecss-grid-prefix}g {
-    word-spacing: -0.43em;
-}
-
-.#{$wsui-purecss-grid-prefix}u {
-    display: inline-block;
-    letter-spacing: normal;
-    word-spacing: normal;
-    vertical-align: top;
-    text-rendering: auto;
-}
-
-/*
-Resets the font family back to the OS/browser's default sans-serif font,
-this the same font stack that Normalize.css sets for the `body`.
-*/
-.#{$wsui-purecss-grid-prefix}g [class *= "#{$wsui-purecss-grid-prefix}u"] {
-    font-family: sans-serif;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1,
-.#{$wsui-purecss-grid-prefix}u-1-1,
-.#{$wsui-purecss-grid-prefix}u-1-2,
-.#{$wsui-purecss-grid-prefix}u-1-3,
-.#{$wsui-purecss-grid-prefix}u-2-3,
-.#{$wsui-purecss-grid-prefix}u-1-4,
-.#{$wsui-purecss-grid-prefix}u-3-4,
-.#{$wsui-purecss-grid-prefix}u-1-5,
-.#{$wsui-purecss-grid-prefix}u-2-5,
-.#{$wsui-purecss-grid-prefix}u-3-5,
-.#{$wsui-purecss-grid-prefix}u-4-5,
-.#{$wsui-purecss-grid-prefix}u-5-5,
-.#{$wsui-purecss-grid-prefix}u-1-6,
-.#{$wsui-purecss-grid-prefix}u-5-6,
-.#{$wsui-purecss-grid-prefix}u-1-8,
-.#{$wsui-purecss-grid-prefix}u-3-8,
-.#{$wsui-purecss-grid-prefix}u-5-8,
-.#{$wsui-purecss-grid-prefix}u-7-8,
-.#{$wsui-purecss-grid-prefix}u-1-12,
-.#{$wsui-purecss-grid-prefix}u-5-12,
-.#{$wsui-purecss-grid-prefix}u-7-12,
-.#{$wsui-purecss-grid-prefix}u-11-12,
-.#{$wsui-purecss-grid-prefix}u-1-24,
-.#{$wsui-purecss-grid-prefix}u-2-24,
-.#{$wsui-purecss-grid-prefix}u-3-24,
-.#{$wsui-purecss-grid-prefix}u-4-24,
-.#{$wsui-purecss-grid-prefix}u-5-24,
-.#{$wsui-purecss-grid-prefix}u-6-24,
-.#{$wsui-purecss-grid-prefix}u-7-24,
-.#{$wsui-purecss-grid-prefix}u-8-24,
-.#{$wsui-purecss-grid-prefix}u-9-24,
-.#{$wsui-purecss-grid-prefix}u-10-24,
-.#{$wsui-purecss-grid-prefix}u-11-24,
-.#{$wsui-purecss-grid-prefix}u-12-24,
-.#{$wsui-purecss-grid-prefix}u-13-24,
-.#{$wsui-purecss-grid-prefix}u-14-24,
-.#{$wsui-purecss-grid-prefix}u-15-24,
-.#{$wsui-purecss-grid-prefix}u-16-24,
-.#{$wsui-purecss-grid-prefix}u-17-24,
-.#{$wsui-purecss-grid-prefix}u-18-24,
-.#{$wsui-purecss-grid-prefix}u-19-24,
-.#{$wsui-purecss-grid-prefix}u-20-24,
-.#{$wsui-purecss-grid-prefix}u-21-24,
-.#{$wsui-purecss-grid-prefix}u-22-24,
-.#{$wsui-purecss-grid-prefix}u-23-24,
-.#{$wsui-purecss-grid-prefix}u-24-24 {
-    display: inline-block;
-    letter-spacing: normal;
-    word-spacing: normal;
-    vertical-align: top;
-    text-rendering: auto;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-24 {
-    width: 4.1667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-12,
-.#{$wsui-purecss-grid-prefix}u-2-24 {
-    width: 8.3333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-8,
-.#{$wsui-purecss-grid-prefix}u-3-24 {
-    width: 12.5000%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-6,
-.#{$wsui-purecss-grid-prefix}u-4-24 {
-    width: 16.6667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-5 {
-    width: 20%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-5-24 {
-    width: 20.8333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-4,
-.#{$wsui-purecss-grid-prefix}u-6-24 {
-    width: 25%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-7-24 {
-    width: 29.1667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-3,
-.#{$wsui-purecss-grid-prefix}u-8-24 {
-    width: 33.3333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-3-8,
-.#{$wsui-purecss-grid-prefix}u-9-24 {
-    width: 37.5000%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-2-5 {
-    width: 40%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-5-12,
-.#{$wsui-purecss-grid-prefix}u-10-24 {
-    width: 41.6667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-11-24 {
-    width: 45.8333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1-2,
-.#{$wsui-purecss-grid-prefix}u-12-24 {
-    width: 50%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-13-24 {
-    width: 54.1667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-7-12,
-.#{$wsui-purecss-grid-prefix}u-14-24 {
-    width: 58.3333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-3-5 {
-    width: 60%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-5-8,
-.#{$wsui-purecss-grid-prefix}u-15-24 {
-    width: 62.5000%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-2-3,
-.#{$wsui-purecss-grid-prefix}u-16-24 {
-    width: 66.6667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-17-24 {
-    width: 70.8333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-3-4,
-.#{$wsui-purecss-grid-prefix}u-18-24 {
-    width: 75%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-19-24 {
-    width: 79.1667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-4-5 {
-    width: 80%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-5-6,
-.#{$wsui-purecss-grid-prefix}u-20-24 {
-    width: 83.3333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-7-8,
-.#{$wsui-purecss-grid-prefix}u-21-24 {
-    width: 87.5000%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-11-12,
-.#{$wsui-purecss-grid-prefix}u-22-24 {
-    width: 91.6667%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-23-24 {
-    width: 95.8333%;
-}
-
-.#{$wsui-purecss-grid-prefix}u-1,
-.#{$wsui-purecss-grid-prefix}u-1-1,
-.#{$wsui-purecss-grid-prefix}u-5-5,
-.#{$wsui-purecss-grid-prefix}u-24-24 {
-    width: 100%;
+@if $include-responsive-grid {
+  @include responsive-grid;
 }

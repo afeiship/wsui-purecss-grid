@@ -1,4 +1,10 @@
+// https://github.com/jbmartinez/pure-sass
 /*wsui-purecss-grid Start*/
 $wsui-purecss-grid-prefix: "wsui-" !default;
-// @thanks to: https://purecss.io/grids/
+$sm-breakpoint: 35.5em !default;
+$md-breakpoint: 48em !default;
+$lg-breakpoint: 64em !default;
+$xl-breakpoint: 80em !default;
+$include-responsive-grid: true !default;
 /*wsui-purecss-grid End*/
+

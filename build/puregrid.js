@@ -10,8 +10,9 @@
     return gulp
       .src([
         'src/index.scss',
-        './node_modules/purecss/build/grid*.css',
-        '!./node_modules/purecss/build/*min.css',
+        'src/grids/_grids-core.scss',
+        'src/grids/_grids-units.scss',
+        'src/grids/_grids-responsive.scss',
       ])
       .pipe($.replace('pure-', '#{$wsui-purecss-grid-prefix}'))
       .pipe($.concat('index.scss'))
