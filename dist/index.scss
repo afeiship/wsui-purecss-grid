@@ -2,11 +2,12 @@
  * name: @jswork/wsui-purecss-grid
  * description: Responsive percentage grid system use purecss.
  * homepage: https://github.com/afeiship/wsui-purecss-grid
- * version: 1.0.2
- * date: 2022-03-14 22:28:44
+ * version: 1.0.3
+ * date: 2022-03-14 22:53:57
  * license: MIT
  */
 
+// https://github.com/jbmartinez/#{$wsui-purecss-grid-prefix}sass
 /*wsui-purecss-grid Start*/
 $wsui-purecss-grid-prefix: "wsui-" !default;
 $sm-breakpoint: 35.5em !default;
@@ -14,12 +15,8 @@ $md-breakpoint: 48em !default;
 $lg-breakpoint: 64em !default;
 $xl-breakpoint: 80em !default;
 $include-responsive-grid: true !default;
-// @thanks to: https://purecss.io/grids/
 /*wsui-purecss-grid End*/
 
-/* grids */
-// @import "./grids/grids-core";
-// @import "./grids/grids-units";
 
 .#{$wsui-purecss-grid-prefix}g {
   letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
@@ -52,8 +49,8 @@ $include-responsive-grid: true !default;
   `-moz-` prefix version is omitted.
   */
 
-  display: -webkit-flex;
-  -webkit-flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 
   /* IE10 uses display: flexbox */
   display: -ms-flexbox;
@@ -61,7 +58,6 @@ $include-responsive-grid: true !default;
 
   /* Prevents distributing space between rows */
   -ms-align-content: flex-start;
-  -webkit-align-content: flex-start;
   align-content: flex-start;
 }
 
