@@ -1,9 +1,4 @@
-'use strict';
-
 const gulp = require('gulp');
-const path = require('path');
-const sass = require('gulp-dart-sass'); // 使用 gulp-dart-sass
-const fs = require('fs');
 const $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'gulp.*', 'del', '@jswork/gulp-*'],
 });
@@ -31,7 +26,7 @@ gulp.task('styles', function() {
   return gulp
     .src('.tmp/index.scss')
     .pipe($.jswork.pkgHeader())
-    .pipe(sass({ silenceDeprecations: ['legacy-js-api'] }))
+    .pipe($.dartSass({ silenceDeprecations: ['legacy-js-api'] }))
     .pipe(gulp.dest('dist'));
 });
 
