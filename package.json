@@ -34,7 +34,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "purecss": "^2.0.3"
+    "purecss": "^3.0.0"
   },
   "keywords": [
     "percentage",
