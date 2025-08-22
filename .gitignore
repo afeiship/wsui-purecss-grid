@@ -3,6 +3,7 @@ bower_components
 coverage
 npm-debug.log
 yarn.lock
+pnpm-lock.yaml
 Gemfile.lock
 yarn-error.log
 package-lock.json
