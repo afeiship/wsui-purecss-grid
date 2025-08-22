@@ -13,11 +13,22 @@ npm i @jswork/wsui-twbs4-grid
 
 ## usage
 ```scss
-// default to `scss`
-@import '~@jswork/wsui-twbs4-grid';
+// customize via overriding variables before import.
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
 
-// or use `css`
-@import '~@jswork/wsui-twbs4-grid/dist/index.css';
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$grid-row-columns: 6;
+
+
+@import '@jswork/wsui-twbs4-grid';
 ```
 
 ## license
