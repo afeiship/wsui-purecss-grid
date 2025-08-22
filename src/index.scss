@@ -17,12 +17,17 @@ html {
 }
 
 $grid-breakpoints: (
-  xs: 390px,
-  sm: 768px,
-  md: 1280px,
-  lg: 1440px,
-  xl: 1600px
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
 );
+
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$grid-row-columns: 6;
 
 
 @import "bootstrap/scss/functions";
