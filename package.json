@@ -2,7 +2,7 @@
   "name": "@jswork/wsui-twbs4-grid",
   "version": "1.0.0",
   "type": "module",
-  "description": "Responsive percentage grid system use purecss.",
+  "description": "bootstrap4 grid system for wsui.",
   "homepage": "https://github.com/afeiship/wsui-twbs4-grid",
   "author": {
     "name": "afei",

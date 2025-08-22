@@ -1,5 +1,5 @@
 # wsui-twbs4-grid
-> Responsive percentage grid system use purecss.
+> bootstrap4 grid system for wsui.
 
 [![version][version-image]][version-url]
 [![license][license-image]][license-url]
