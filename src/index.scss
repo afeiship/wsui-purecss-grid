@@ -16,6 +16,15 @@ html {
   box-sizing: inherit;
 }
 
+$grid-breakpoints: (
+  xs: 390px,
+  sm: 768px,
+  md: 1280px,
+  lg: 1440px,
+  xl: 1600px
+);
+
+
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 
@@ -28,3 +37,5 @@ html {
 @import "bootstrap/scss/utilities/display";
 @import "bootstrap/scss/utilities/flex";
 @import "bootstrap/scss/utilities/spacing";
+
+

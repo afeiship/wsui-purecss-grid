@@ -1,17 +1,12 @@
 <!doctype html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>pureCSS Grid 使用示例</title>
-  <link rel="stylesheet" href="../src/pure-grids/grids.css">
-  <link rel="stylesheet" href="../src/pure-grids/grids-units.css">
-  <link rel="stylesheet" href="../src/pure-grids/grids-core.css">
-  <link rel="stylesheet" href="../src/pure-grids/grids-responsive.css">
-
+  <link rel="stylesheet" href="./style.css">
   <style>
     .demo-box {
       box-sizing: border-box;
@@ -20,7 +15,6 @@
       padding: 10px;
       text-align: center;
       font-size: 1.1em;
-      margin-bottom: 8px;
     }
 
     .section {
@@ -33,29 +27,80 @@
     .section h2 {
       margin-top: 0;
     }
+
+    .screen-info {
+      position: fixed;
+      top: 4px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      z-index: 9999;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .screen-info div {
+      display: inline-block;
+    }
   </style>
 </head>
-
 <body>
-  <section class="section">
-    <h1>pureCSS Grid 示例</h1>
-    <h2>响应式布局</h2>
-    <p>在不同屏幕尺寸下自动调整布局</p>
-    <div class="pure-g">
-      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 demo-box">
-        响应式列 1
-      </div>
-      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 demo-box">
-        响应式列 2
-      </div>
-      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 demo-box">
-        响应式列 3
-      </div>
-      <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 demo-box">
-        响应式列 4
-      </div>
+<section class="section">
+  <h1>pureCSS Grid 示例</h1>
+  <h2>响应式布局</h2>
+  <p>在不同屏幕尺寸下自动调整布局</p>
+  <!-- 屏幕尺寸显示器 -->
+  <div class="screen-info" id="screenInfo">
+    <div>W: <span id="screenWidth">0</span>px</div>
+    <div>H: <span id="screenHeight">0</span>px</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
     </div>
-  </section>
-</body>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 demo-box">
+      响应式列
+    </div>
+  </div>
+</section>
+<script>
+  function updateScreenInfo () {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    document.getElementById("screenWidth").textContent = width;
+    document.getElementById("screenHeight").textContent = height;
+  }
 
+  // 初始化显示
+  updateScreenInfo();
+
+  // 监听窗口大小变化
+  window.addEventListener("resize", updateScreenInfo);
+</script>
+</body>
 </html>
