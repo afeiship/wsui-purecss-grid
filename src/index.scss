@@ -1,10 +1,30 @@
-// https://github.com/jbmartinez/pure-sass
-$wsui-purecss-grid-prefix: "wsui-" !default;
+/*!
+ * Bootstrap Grid v4.6.2 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 
-$sm-breakpoint: 35.5em !default;
-$md-breakpoint: 48em !default;
-$lg-breakpoint: 64em !default;
-$xl-breakpoint: 80em !default;
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
 
-$include-responsive-grid: true !default;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+@import "bootstrap/scss/mixins/deprecate";
+@import "bootstrap/scss/mixins/breakpoints";
+@import "bootstrap/scss/mixins/grid-framework";
+@import "bootstrap/scss/mixins/grid";
+
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/utilities/display";
+@import "bootstrap/scss/utilities/flex";
+@import "bootstrap/scss/utilities/spacing";

@@ -1,34 +1,46 @@
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({
-  pattern: ['gulp-*', 'gulp.*', 'del', '@jswork/gulp-*'],
+import gulp from 'gulp';
+import { deleteAsync } from 'del';
+import * as sass from 'sass'; // ✅ 正确方式：使用 namespace import
+import gulpSass from 'gulp-sass';
+import size from 'gulp-size';
+
+// 创建 sass 编译器实例（传入 sass 模块）
+const gulpSassInstance = gulpSass(sass); // 注意：传的是整个 `sass` 命名空间
+const outputStyle = process.env.sass_output_style;
+const sassSource = process.env.sass_source;
+
+const sassOptions = {
+  silenceDeprecations: [
+    'legacy-js-api',
+    'mixed-decls',
+    'color-functions',
+    'global-builtin',
+    'import'
+  ],
+  outputStyle,
+  indentType: 'space',
+  indentWidth: 2,
+  includePaths: ['./node_modules']
+};
+
+gulp.task('clean', function () {
+  return deleteAsync(['dist']);
 });
 
-
-//clean
-gulp.task('clean', function() {
-  return $.del(['dist', '.tmp']);
-});
-
-gulp.task('puregrid', function() {
+gulp.task('sass', function () {
   return gulp
-    .src([
-      'src/index.scss',
-      'src/grids/_grids-core.scss',
-      'src/grids/_grids-units.scss',
-      'src/grids/_grids-responsive.scss',
-    ])
-    .pipe($.replace('pure-', '#{$wsui-purecss-grid-prefix}'))
-    .pipe($.concat('index.scss'))
-    .pipe(gulp.dest('.tmp'));
-});
-
-gulp.task('styles', function() {
-  return gulp
-    .src('.tmp/index.scss')
-    .pipe($.jswork.pkgHeader())
-    .pipe($.dartSass({ silenceDeprecations: ['legacy-js-api'] }))
+    .src(sassSource)
+    .pipe(gulpSassInstance(sassOptions).on('error', gulpSassInstance.logError))
+    .pipe(size())
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('sass:watch', function () {
+  gulp.watch('lib/**/*.scss', gulp.series('sass'));
+});
 
-gulp.task('default', gulp.series(['clean', 'puregrid', 'styles']));
+// dev
+gulp.task('dev', gulp.series(['clean', 'sass', 'sass:watch']));
+
+// build
+gulp.task('default', gulp.series(['clean', 'sass']));

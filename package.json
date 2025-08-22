@@ -1,40 +1,39 @@
 {
-  "name": "@jswork/wsui-purecss-grid",
-  "version": "1.0.5",
+  "name": "@jswork/wsui-twbs4-grid",
+  "version": "1.0.0",
+  "type": "module",
   "description": "Responsive percentage grid system use purecss.",
-  "homepage": "https://github.com/afeiship/wsui-purecss-grid",
+  "homepage": "https://github.com/afeiship/wsui-twbs4-grid",
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
   },
   "scripts": {
-    "build": "gulp",
+    "dev": "run-p dev:*",
+    "dev:sass": "env-cmd -e base,dev gulp dev",
+    "dev:sync": "browser-sync start --server --files 'lib/**/*'",
+    "build": "env-cmd -e base,production gulp",
     "release": "release-it"
   },
   "main": "dist/index.scss",
   "license": "MIT",
   "devDependencies": {
-    "@jswork/gulp-pkg-header": "^1.0.3",
-    "@jswork/next": "^1.3.4",
-    "autoprefixer": "^10.0.2",
-    "del": "^6.0.0",
-    "express": "^4.17.1",
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-dart-sass": "^1.1.0",
-    "gulp-load-plugins": "^2.0.5",
-    "gulp-postcss": "^9.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.1.0",
-    "release-it": "^14.2.1"
+    "@jswork/style-guide": "^1.0.4",
+    "del": "^7.1.0",
+    "env-cmd": "^10.1.0",
+    "gulp": "^5.0.0",
+    "gulp-sass": "5",
+    "gulp-size": "^5.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.6.2",
+    "sass": "~1.64.2"
+  },
+  "dependencies": {
+    "bootstrap": "4"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  },
-  "dependencies": {
-    "purecss": "^3.0.0"
   },
   "keywords": [
     "percentage",
